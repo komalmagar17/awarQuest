@@ -166,7 +166,12 @@ const EN = {
   missionTitle4: 'Mission 4: Stand Up Safely Online',
   missionSummary4: 'A classmate is being targeted in a group chat with mean messages and edited photos. You witness it happening live.',
   missionTitle5: 'Mission 5: Fake Scholarship Portal',
-  missionSummary5: 'A website promises a ₹50,000 government scholarship — but asks for your Aadhaar, bank details, and a "processing fee".'
+  missionSummary5: 'A website promises a ₹50,000 government scholarship — but asks for your Aadhaar, bank details, and a "processing fee".',
+  guestSudokuDone: 'Sudoku complete',
+  guestPuzzleComplete: 'Puzzle Complete!',
+  whatYoullLearn: 'What you\'ll learn',
+  guestIntroTip: 'Tip: Solve each puzzle to unlock the next story chapter. Chat with Life Guide for bonus XP!',
+  startAdventure: 'Start Adventure'
 };
 
 const HI = {
@@ -306,7 +311,12 @@ const HI = {
   missionTitle4: 'मिशन 4: ऑनलाइन सुरक्षित रूप से खड़े हों',
   missionSummary4: 'एक सहपाठी ग्रुप चैट में बुरे संदेशों और एडिट की गई फोटो से निशाना बनाया जा रहा है।',
   missionTitle5: 'मिशन 5: नकली छात्रवृत्ति पोर्टल',
-  missionSummary5: 'एक वेबसाइट ₹50,000 सरकारी छात्रवृत्ति का वादा करती है — लेकिन आधार, बैंक विवरण और "प्रोसेसिंग फीस" माँगती है।'
+  missionSummary5: 'एक वेबसाइट ₹50,000 सरकारी छात्रवृत्ति का वादा करती है — लेकिन आधार, बैंक विवरण और "प्रोसेसिंग फीस" माँगती है।',
+  guestSudokuDone: 'सुडोकू पूर्ण',
+  guestPuzzleComplete: 'पहेली पूर्ण!',
+  whatYoullLearn: 'आप क्या सीखेंगे',
+  guestIntroTip: 'सुझाव: हर पहेली हल करने से अगला कहानी अध्याय खुलेगा। बोनस XP के लिए Life Guide से चैट करें!',
+  startAdventure: 'रोमांच शुरू करें'
 };
 
 function B(o = {}) { return { ...EN, ...HI, ...o }; }

@@ -503,6 +503,100 @@ function beginStory() {
   state.sceneEntered = true;
 
   const slug = state.scenario?.slug || 'otp-scam-alert';
+
+  // Guest mode: run intro sudoku + learning recap before the story starts
+  const isGuest = localStorage.getItem('guestMode') === 'true' || window.api?.user?.isGuest;
+  const isFirstMission = !state.progress.some(p => p.status === 'completed');
+  if (isGuest && isFirstMission && !state._guestIntroShown) {
+    state._guestIntroShown = true;
+    runGuestIntro(slug);
+    return;
+  }
+
+  _launchStory(slug);
+}
+
+async function runGuestIntro(slug) {
+  const t = (k, fb) => window.i18n?.t(k) !== k ? window.i18n.t(k) : fb;
+
+  // 1) Run the sudoku puzzle
+  const solved = await window.PuzzleEngine.run('guest-intro-sudoku');
+  if (!solved) {
+    // User cancelled — still start the story
+    _launchStory(slug);
+    return;
+  }
+
+  window.RewardFX?.confetti(24);
+  window.RewardFX?.xpBurst(30, t('guestSudokuDone', 'Sudoku complete'));
+
+  // 2) Build and show the "What You'll Learn" overlay
+  const scenario = state.scenario;
+  const pack = window.SessionScore?.LEARNING_PACKS?.[slug] || {};
+  const takeaways = window.StoryI18n?.getLearningTakeaways?.(slug) || pack.takeaways || scenario?.learningObjectives || [];
+  const schemes = pack.schemes || [];
+
+  const overlay = document.createElement('div');
+  overlay.className = 'guest-intro-overlay';
+
+  let schemeHtml = '';
+  if (schemes.length) {
+    schemeHtml = `<h4 class="guest-intro-sub">${t('schemesAndHelplines', 'Schemes & official helplines')}</h4>
+      <div class="guest-intro-schemes">`;
+    schemes.forEach(s => {
+      schemeHtml += '<div class="guest-intro-scheme-card">';
+      if (s.url) {
+        schemeHtml += `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" class="guest-intro-scheme-link">${escapeHtml(s.title)}</a>`;
+      } else {
+        schemeHtml += `<span class="guest-intro-scheme-link">${escapeHtml(s.title)}</span>`;
+      }
+      if (s.phone) schemeHtml += `<span class="guest-intro-scheme-phone">📞 ${escapeHtml(s.phone)}</span>`;
+      if (s.desc) schemeHtml += `<p class="guest-intro-scheme-desc">${escapeHtml(s.desc)}</p>`;
+      schemeHtml += '</div>';
+    });
+    schemeHtml += '</div>';
+  }
+
+  let takeawayHtml = '';
+  if (takeaways.length) {
+    takeawayHtml = `<h4 class="guest-intro-sub">${t('whatYoullLearn', 'What you\'ll learn')}</h4>
+      <ul class="guest-intro-takeaways">`;
+    takeaways.forEach(line => {
+      takeawayHtml += `<li>${escapeHtml(line)}</li>`;
+    });
+    takeawayHtml += '</ul>';
+  }
+
+  overlay.innerHTML = `
+    <div class="guest-intro-card">
+      <div class="guest-intro-header">
+        <span class="guest-intro-badge">🧩 ${t('guestPuzzleComplete', 'Puzzle Complete!')}</span>
+        <h2>${t('whatLearned', 'What You Learned')}</h2>
+        <p class="guest-intro-mission-title">${escapeHtml(scenario?.title || '')}</p>
+      </div>
+      <div class="guest-intro-body">
+        ${takeawayHtml}
+        ${schemeHtml}
+        <p class="guest-intro-tip">${t('guestIntroTip', 'Tip: Solve each puzzle to unlock the next story chapter. Chat with Life Guide for bonus XP!')}</p>
+      </div>
+      <div class="guest-intro-actions">
+        <button type="button" class="btn primary guest-intro-continue">${t('startAdventure', 'Start Adventure')} →</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  return new Promise((resolve) => {
+    overlay.querySelector('.guest-intro-continue').addEventListener('click', () => {
+      overlay.remove();
+      _launchStory(slug);
+      resolve();
+    });
+  });
+}
+
+function _launchStory(slug) {
   window.StoryEngine.onClueSolved = async (clueId) => {
     await withBusy(async () => {
       await collectClue(clueId);

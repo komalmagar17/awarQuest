@@ -228,6 +228,18 @@ window.CLUE_PUZZLES = {
     ]
   },
 
+  /* ── Guest mode intro sudoku ── */
+  'guest-intro-sudoku': {
+    title: 'Warm Up Your Brain',
+    intro: 'Solve this quick Sudoku to get started! Fill each empty cell so every row and column has numbers 1–4 with no repeats.',
+    type: 'sudoku-mini',
+    skillTip: 'Just like Sudoku requires calm thinking, spotting scams requires pausing before reacting. Never rush decisions about money or personal data.',
+    solution: [[1,2,3,4],[3,4,1,2],[2,1,4,3],[4,3,2,1]],
+    givens: { '0,0': 1, '0,3': 4, '1,2': 1, '2,1': 1, '3,3': 1 },
+    maxAttempts: 5,
+    difficulty: 1
+  },
+
   /* ── Hard timed challenges (5–10 min each) ── */
   'puzzle-hard-math': {
     title: 'Matiks Marathon — Time Under Pressure',

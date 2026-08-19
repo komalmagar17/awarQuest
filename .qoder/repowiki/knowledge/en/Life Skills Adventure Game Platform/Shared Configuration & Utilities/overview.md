@@ -1,0 +1,1 @@
+Provides the application's validated environment configuration, database connection, structured logging, curated resource catalogues, and shared Express utilities such as async middleware and typed error handling.

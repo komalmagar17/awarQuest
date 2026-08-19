@@ -1,0 +1,4 @@
+- CLI scripts follow a uniform shape: connect via `connectDatabase()`, perform one DB operation, log results, then call `sequelize.close()` before exiting.
+- Errors in CLIs are handled by logging to stderr and calling `process.exit(1)` rather than throwing uncaught exceptions.
+- Seeding data is kept as an in-memory constant array and persisted through Sequelize model methods (`findOne`, `upsert`, `count`) instead of raw SQL.
+- Integration tests drive the system end-to-end over HTTP using a small local `req` helper that attaches `Authorization: Bearer <token>` when needed, asserting both HTTP status and response payload shape.

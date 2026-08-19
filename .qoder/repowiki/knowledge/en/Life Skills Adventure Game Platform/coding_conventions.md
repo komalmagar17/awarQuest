@@ -1,0 +1,2 @@
+- All external dependencies (database, AI service, SMTP, JWT secrets) are consumed through validated environment variables rather than hard-coded values.
+- Inter-service communication between the Node API and Python AI service is secured by a shared HMAC token passed via headers and verified on each request.

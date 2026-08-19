@@ -1,0 +1,1 @@
+const express = require('express'); const router = express.Router(); const auth = require('../middleware/authMiddleware'); const controller = require('../controllers/scenario-controller'); router.get('/detail/:id', auth, controller.getOne); router.get('/:ageGroup', auth, controller.list); module.exports = router;

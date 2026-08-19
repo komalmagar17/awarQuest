@@ -1,0 +1,5 @@
+- All Pydantic models set `model_config = ConfigDict(extra='forbid')` to reject unknown fields on both request and response payloads.
+- Configuration is loaded through a cached `get_settings()` dependency injected via FastAPI's `Depends(get_settings)` rather than global state.
+- Secrets are modeled as `pydantic.SecretStr` fields and accessed via `.get_secret_value()` only when passed to external libraries (e.g., Gemini SDK).
+- External integrations are abstracted behind an ABC (`AIProvider`) so new providers can be added without touching endpoint logic.
+- Endpoint handlers wrap async provider calls with `asyncio.wait_for(..., timeout=5.0)` and route exceptions to the deterministic fallback, marking responses with `fallback_used=True`.

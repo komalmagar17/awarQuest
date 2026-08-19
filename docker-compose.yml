@@ -1,0 +1,65 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: awarquest_postgres
+    environment:
+      POSTGRES_USER: komalmagar17
+      POSTGRES_PASSWORD: l@kshaYbAB3u
+      POSTGRES_DB: sihBackend
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U komalmagar17 -d sihBackend"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ai-service:
+    build: ./backend/ai-service
+    container_name: awarquest_ai
+    environment:
+      AI_SERVICE_TOKEN: secret_internal_ai_token_change_in_production_987654321
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: gemini-1.5-flash
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+
+  api:
+    build: ./backend
+    container_name: awarquest_api
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      DATABASE_URL: postgresql://komalmagar17:l%40kshaYbAB3u@postgres:5432/sihBackend
+      DB_SSL: false
+      JWT_ACCESS_SECRET: super_secure_jwt_access_secret_key_at_least_48_chars_long_here
+      JWT_REFRESH_SECRET: super_secure_jwt_refresh_secret_key_at_least_48_chars_long_here
+      JWT_ACCESS_TTL: 15m
+      JWT_REFRESH_TTL: 7d
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:5001,http://127.0.0.1:5001
+      AI_ENABLED: true
+      AI_SERVICE_URL: http://ai-service:8001
+      AI_SERVICE_TOKEN: secret_internal_ai_token_change_in_production_987654321
+      AUTO_SYNC: true
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      EMAIL_FROM: ${EMAIL_FROM:-noreply@example.com}
+      GUEST_PLAY_ENABLED: ${GUEST_PLAY_ENABLED:-true}
+    ports:
+      - "5001:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: public_assets
+title: Frontend Game Client (Life Skills Adventure)
+scope:
+    - backend/public/
+source_files: []
+depends_on: []
+related_to:
+    - path: runtime_entrypoints

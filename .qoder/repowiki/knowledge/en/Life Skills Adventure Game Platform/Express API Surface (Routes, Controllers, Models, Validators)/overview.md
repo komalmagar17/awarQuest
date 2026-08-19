@@ -1,0 +1,1 @@
+Defines the backend's HTTP API surface by wiring Express routes to controllers that orchestrate business logic over Sequelize models, with Joi-based request validation and shared middleware.

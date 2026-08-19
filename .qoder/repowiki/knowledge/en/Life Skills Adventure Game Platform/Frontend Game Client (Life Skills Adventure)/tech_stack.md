@@ -1,0 +1,1 @@
+Vanilla JavaScript with Three.js 0.160.0 loaded through a browser `importmap` from unpkg; uses Fetch API for HTTP, localStorage for token/user persistence, and CSS animations for UI effects.

@@ -1,0 +1,1 @@
+Run the full stack with `docker compose up --build`; the API is exposed on port 5001, the AI service on 8001, and Postgres on 5432. For local frontend-only development without Docker, run `node simple-server.js` to serve `backend/public` as an SPA on port 5001.

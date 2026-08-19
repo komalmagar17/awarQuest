@@ -1,0 +1,6 @@
+- Global shared state is exposed as a top-level `state` object in each script rather than passed as parameters, with `game.js` acting as the central coordinator.
+- DOM helpers `$` and `$$` are defined once in `game.js` and reused across modules instead of importing jQuery or similar libraries.
+- UI screens are implemented as sibling `<section id="screen-*">` elements whose visibility is controlled by toggling the `active` class via `showScreen()`.
+- User-facing strings are localized through `data-i18n` attributes on elements and resolved at render time via the `i18n.js` / `story-i18n.js` modules.
+- All backend communication goes through the `GameAPI` class methods (e.g. `login`, `startGame`, `gameAction`, `getChallenges`) rather than raw `fetch` calls scattered in UI code.
+- The three.js 3D world instance is stored in `state.world` and explicitly disposed before navigating away from the game screen to free GPU resources.

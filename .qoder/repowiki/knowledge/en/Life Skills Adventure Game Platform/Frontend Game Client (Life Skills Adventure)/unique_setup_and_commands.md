@@ -1,0 +1,1 @@
+No build or dev server is required — placing these files under the backend's `public/` directory makes them available at `/` and `/js/*`, `/css/*`. Local development auto-switches to the built-in mock API when `localStorage.guestMode === 'true'` or when served from `localhost`/`127.0.0.1`, so the frontend works standalone without a running backend.

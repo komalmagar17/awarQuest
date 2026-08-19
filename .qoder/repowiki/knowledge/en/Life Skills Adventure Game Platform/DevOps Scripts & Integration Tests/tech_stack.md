@@ -1,0 +1,1 @@
+Node.js CLIs using Sequelize ORM against the project's existing DB; integration test uses native `fetch` and `node:assert/strict` without any external test framework.

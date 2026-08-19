@@ -1,0 +1,1 @@
+Email delivery requires `SMTP_HOST`/`SMTP_PORT`/`SMTP_SECURE`/`SMTP_USER`/`SMTP_PASS`/`EMAIL_FROM` env vars; without them OTP emails fall back to dev-mode console logging. AI decision flow is disabled unless `AI_ENABLED=true`, in which case `AI_SERVICE_URL`, `AI_SERVICE_TOKEN`, and `AI_REQUEST_TIMEOUT_MS` must be set.

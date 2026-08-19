@@ -1,0 +1,1 @@
+Provides domain services (AI game decisions, OTP issuance/verification, email delivery, game session orchestration) and Express middleware for authentication, authorization, input validation, security hardening, and centralized error handling.

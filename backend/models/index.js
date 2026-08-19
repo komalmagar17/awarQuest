@@ -1,0 +1,31 @@
+const User = require('./User');
+const PlayerProfile = require('./PlayerProfile');
+const Scenario = require('./Scenario');
+const GovResource = require('./GovResource');
+const ScenarioResource = require('./ScenarioResource');
+const PlayerProgress = require('./PlayerProgress');
+const PlayerSkill = require('./PlayerSkill');
+const GameSession = require('./GameSession');
+const AuditEvent = require('./AuditEvent');
+const AnalyticsEvent = require('./AnalyticsEvent');
+const AiInteraction = require('./AiInteraction');
+const OtpCode = require('./OtpCode');
+
+User.hasOne(PlayerProfile, { foreignKey: 'userId', as: 'profile', onDelete: 'CASCADE' });
+PlayerProfile.belongsTo(User, { foreignKey: 'userId' });
+User.hasMany(PlayerProgress, { foreignKey: 'userId', as: 'progress', onDelete: 'CASCADE' });
+PlayerProgress.belongsTo(User, { foreignKey: 'userId' });
+Scenario.hasMany(PlayerProgress, { foreignKey: 'scenarioId', as: 'progress', onDelete: 'RESTRICT' });
+PlayerProgress.belongsTo(Scenario, { foreignKey: 'scenarioId' });
+User.hasMany(GameSession, { foreignKey: 'userId', as: 'gameSessions', onDelete: 'CASCADE' });
+GameSession.belongsTo(User, { foreignKey: 'userId' });
+Scenario.hasMany(GameSession, { foreignKey: 'scenarioId', as: 'gameSessions', onDelete: 'RESTRICT' });
+GameSession.belongsTo(Scenario, { foreignKey: 'scenarioId' });
+User.hasMany(PlayerSkill, { foreignKey: 'userId', as: 'skills', onDelete: 'CASCADE' });
+PlayerSkill.belongsTo(User, { foreignKey: 'userId' });
+Scenario.belongsToMany(GovResource, { through: ScenarioResource, foreignKey: 'scenarioId', otherKey: 'resourceId', as: 'resources' });
+GovResource.belongsToMany(Scenario, { through: ScenarioResource, foreignKey: 'resourceId', otherKey: 'scenarioId', as: 'scenarios' });
+User.hasMany(OtpCode, { foreignKey: 'userId', as: 'otpCodes', onDelete: 'CASCADE' });
+OtpCode.belongsTo(User, { foreignKey: 'userId' });
+
+module.exports = { User, PlayerProfile, Scenario, GovResource, ScenarioResource, PlayerProgress, PlayerSkill, GameSession, AuditEvent, AnalyticsEvent, AiInteraction, OtpCode };

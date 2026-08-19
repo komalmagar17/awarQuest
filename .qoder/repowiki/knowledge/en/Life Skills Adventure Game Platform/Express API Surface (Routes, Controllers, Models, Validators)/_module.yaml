@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: api_surface
+title: Express API Surface (Routes, Controllers, Models, Validators)
+scope:
+    - backend/routes/
+    - backend/controllers/
+    - backend/models/
+    - backend/validators/
+source_files: []
+depends_on: []
+related_to: []

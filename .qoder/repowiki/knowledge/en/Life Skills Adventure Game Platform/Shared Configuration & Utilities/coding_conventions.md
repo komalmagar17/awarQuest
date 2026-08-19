@@ -1,0 +1,5 @@
+- Environment variables are declared once in a Joi schema with explicit types, defaults, and cross-field constraints rather than read ad-hoc from `process.env`.
+- Configuration modules export plain objects or functions and are required as singletons; no constructor pattern is used for shared services like the DB client or logger.
+- Express route handlers are wrapped with the `asyncHandler` HOC so they can use `await` without try/catch, delegating errors to `next`.
+- Domain-specific errors extend a custom `AppError` class that carries HTTP `statusCode`, a machine-readable `code`, and an `isOperational` flag instead of throwing generic `Error` instances.
+- Static reference data (regions, curated resources, mission sort order) is exported as module-level constants rather than fetched at runtime.

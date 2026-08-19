@@ -1,0 +1,1 @@
+Database migrations are applied automatically at startup only when `AUTO_SYNC=true` and `NODE_ENV !== 'production'`; migration SQL files must be named `migrations-*.sql` and placed at the backend root directory.

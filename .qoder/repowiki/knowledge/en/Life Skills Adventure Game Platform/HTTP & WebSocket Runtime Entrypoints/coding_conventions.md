@@ -1,0 +1,4 @@
+- Environment-driven configuration is accessed through a shared `config/env` module rather than inline constants.
+- Structured logging uses `pino` via `./config/logger`, with request IDs propagated from `req.id` into log contexts.
+- Socket.IO event handlers are centralized in `sockets/index.js` and registered through an exported `initializeSockets(io)` factory instead of inline listeners.
+- Graceful shutdown sequences close real-time layers before HTTP, then database connections, and always enforce a bounded timeout before `process.exit`.

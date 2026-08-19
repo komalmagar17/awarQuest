@@ -1,0 +1,1 @@
+Node.js with Express; JWT auth via `jsonwebtoken`; OTP hashing via `bcryptjs`; email via `nodemailer`; rate limiting via `express-rate-limit`; database access through Sequelize models; optional external AI decision service called over HTTPS with `AbortController` timeouts.

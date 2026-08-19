@@ -1,0 +1,1 @@
+Express 4.x for HTTP, Socket.IO for real-time transport (websocket + polling), pino-http for structured request logging, helmet for security headers, cors with explicit origin allowlist, cookie-parser, and Sequelize for DB lifecycle.

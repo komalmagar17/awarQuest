@@ -1,0 +1,1 @@
+Express routers with Sequelize ORM (UUID primary keys, default scopes, associations), Joi for request schema validation, bcryptjs for password hashing, jsonwebtoken for access/refresh token issuance stored in httpOnly cookies, and an OTP flow backed by an `otp-service`.

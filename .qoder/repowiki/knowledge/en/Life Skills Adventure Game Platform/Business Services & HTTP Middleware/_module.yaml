@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: business_services
+title: Business Services & HTTP Middleware
+scope:
+    - backend/services/
+    - backend/middleware/
+source_files: []
+depends_on: []
+related_to:
+    - path: ai_service

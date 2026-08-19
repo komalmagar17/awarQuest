@@ -1,0 +1,105 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: Q0DeR-MaG1C-BrAnCh-Fo2-NoN-GiT-Or-No-C0MmIt
+nodes_managed: true
+exported_at: "2026-08-15T13:24:18Z"
+modules:
+    "":
+        dir_name: Life Skills Adventure Game Platform
+        title: Life Skills Adventure Game Platform
+        scope:
+            - README_GAME.md
+            - PRD.md
+            - RESOURCE_CATALOGUE.md
+            - DEPLOYMENT.md
+            - .gitignore
+            - docker-compose.yml
+            - simple-server.js
+            - .env.example
+        source_files: []
+        children:
+            - ai_service
+            - api_surface
+            - business_services
+            - devops_and_scripts
+            - public_assets
+            - runtime_entrypoints
+            - shared_config
+        depends_on: []
+        related_to: []
+    ai_service:
+        dir_name: LifeGuide AI Decision Service
+        title: LifeGuide AI Decision Service
+        scope:
+            - backend/ai-service/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: business_services
+    api_surface:
+        dir_name: Express API Surface (Routes, Controllers, Models, Validators)
+        title: Express API Surface (Routes, Controllers, Models, Validators)
+        scope:
+            - backend/routes/
+            - backend/controllers/
+            - backend/models/
+            - backend/validators/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    business_services:
+        dir_name: Business Services & HTTP Middleware
+        title: Business Services & HTTP Middleware
+        scope:
+            - backend/services/
+            - backend/middleware/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: ai_service
+    devops_and_scripts:
+        dir_name: DevOps Scripts & Integration Tests
+        title: DevOps Scripts & Integration Tests
+        scope:
+            - backend/scripts/
+            - backend/test/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    public_assets:
+        dir_name: Frontend Game Client (Life Skills Adventure)
+        title: Frontend Game Client (Life Skills Adventure)
+        scope:
+            - backend/public/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: runtime_entrypoints
+    runtime_entrypoints:
+        dir_name: HTTP & WebSocket Runtime Entrypoints
+        title: HTTP & WebSocket Runtime Entrypoints
+        scope:
+            - backend/app.js
+            - backend/server.js
+            - backend/sockets/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: public_assets
+    shared_config:
+        dir_name: Shared Configuration & Utilities
+        title: Shared Configuration & Utilities
+        scope:
+            - backend/config/
+            - backend/utils/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

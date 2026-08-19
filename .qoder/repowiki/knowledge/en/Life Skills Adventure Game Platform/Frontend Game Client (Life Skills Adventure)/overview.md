@@ -1,0 +1,1 @@
+Browser-based single-page client for the Life Skills Adventure game, providing auth screens, mission selection, a Three.js 3D world, story-driven chat gameplay, puzzles, scoring, and rewards.

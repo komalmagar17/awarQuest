@@ -1,0 +1,1 @@
+Joi for environment validation, Sequelize with PostgreSQL dialect (optional SSL) for DB access, pino for structured logging with optional pino-pretty transport, dotenv for .env loading.

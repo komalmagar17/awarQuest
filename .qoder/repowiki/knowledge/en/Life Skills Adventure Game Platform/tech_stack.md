@@ -1,0 +1,1 @@
+Docker Compose orchestrates PostgreSQL 16, a Node.js Express backend, and a Python FastAPI AI microservice; all services consume configuration exclusively via environment variables sourced from `.env.example`.

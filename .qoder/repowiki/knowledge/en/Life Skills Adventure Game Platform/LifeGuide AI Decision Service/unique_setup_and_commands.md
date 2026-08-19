@@ -1,0 +1,1 @@
+Requires an `AI_SERVICE_TOKEN` of at least 32 characters in `.env`; optional `GEMINI_API_KEY` enables the LLM path — without it the service falls back to deterministic decisions. Run via `uvicorn app.main:app --host 0.0.0.0 --port 8001` or use the provided Docker image which exposes port 8001.

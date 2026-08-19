@@ -1,0 +1,1 @@
+Bootstraps the Express HTTP server and Socket.IO real-time layer, wires middleware, mounts API routes, and handles graceful startup/shutdown with database lifecycle.

@@ -1,0 +1,1 @@
+Python 3.11 + FastAPI 0.115 + Uvicorn ASGI server; Google Generative AI SDK (`google-generativeai==0.8.3`) for Gemini LLM calls with JSON schema-constrained responses; Pydantic v2 settings and models for configuration and payload validation.

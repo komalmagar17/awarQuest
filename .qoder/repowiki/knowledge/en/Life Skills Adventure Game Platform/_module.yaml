@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: ""
+title: Life Skills Adventure Game Platform
+scope:
+    - README_GAME.md
+    - PRD.md
+    - RESOURCE_CATALOGUE.md
+    - DEPLOYMENT.md
+    - .gitignore
+    - docker-compose.yml
+    - simple-server.js
+    - .env.example
+source_files: []
+depends_on: []
+related_to: []

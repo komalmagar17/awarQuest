@@ -1,0 +1,6 @@
+- External or optional integrations (AI service, SMTP) are guarded by environment flags and degrade gracefully to deterministic/local fallbacks rather than throwing.
+- All route-level failures are raised as `AppError` instances carrying a numeric status code, a machine-readable `code`, and a user-facing message, then normalized centrally in `error-handler`.
+- Configuration is read exclusively from `../config/env` and logging goes through `../config/logger` — services never access `process.env` directly.
+- Rate limiting is applied via named `express-rate-limit` instances exported from `security.js` (e.g. `authLimiter`, `otpLimiter`, `writeLimiter`) instead of ad-hoc counters.
+- Input validation is performed by composing the reusable `validate(schema, source)` middleware against Joi schemas before handlers run.
+- Sensitive secrets (JWT secret, AI token, SMTP credentials) are loaded from environment variables and never hard-coded in source files.

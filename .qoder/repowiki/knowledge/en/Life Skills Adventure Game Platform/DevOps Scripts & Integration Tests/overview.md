@@ -1,0 +1,1 @@
+Node.js CLI scripts for database seeding and admin role assignment, plus a single HTTP integration test that exercises the full game-flow API against a running backend.

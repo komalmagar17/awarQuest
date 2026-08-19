@@ -1,0 +1,1 @@
+`node scripts/grant-admin.js <username_or_email>` to promote a user to admin; `node scripts/seed-scenarios.js` to seed published life-skills missions (idempotent via `slug` upsert); `node test/game-flow.test.js` requires a running backend at `http://localhost:5001` (or set `API_URL`) and exits non-zero on assertion failure.

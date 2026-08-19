@@ -1,0 +1,1 @@
+Orchestrates a Node.js Express backend, a Python FastAPI AI decision microservice, and a browser-based Three.js game client behind Docker Compose with shared environment configuration.

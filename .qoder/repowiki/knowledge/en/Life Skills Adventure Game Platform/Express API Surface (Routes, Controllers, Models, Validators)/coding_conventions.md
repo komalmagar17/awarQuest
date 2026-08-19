@@ -1,0 +1,6 @@
+- Each domain has a matching pair of files under `routes/` and `controllers/` with identical names (e.g. `auth-routes.js` ↔ `auth-controller.js`), making the endpoint-to-handler mapping one-to-one.
+- Route definitions compose middleware in a consistent order — rate limiter, then auth, then `validate(schema)` — before invoking the controller method, keeping cross-cutting concerns declarative at the route level.
+- All controller handler functions are wrapped with `asyncHandler` from `utils/async-handler` instead of using try/catch blocks, allowing thrown `AppError` instances to be handled centrally.
+- Input validation is centralized in Joi schemas under `validators/` and referenced by name in route definitions rather than inlined, so request shape is validated before reaching the controller.
+- Sensitive model attributes (`passwordHash`, `tokenVersion`) are excluded via Sequelize default scopes and re-included only when needed through named scopes such as `withAuth`.
+- Domain relationships between models are declared once in `models/index.js` using Sequelize association helpers, and individual model files define only their own columns.

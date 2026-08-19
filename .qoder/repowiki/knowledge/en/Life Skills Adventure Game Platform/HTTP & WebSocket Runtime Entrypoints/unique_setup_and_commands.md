@@ -1,0 +1,1 @@
+Startup requires a connected database via `connectDatabase()` before the HTTP server begins listening; graceful shutdown listens for `SIGTERM`/`SIGINT`, closes Socket.IO first, then the HTTP server, then `sequelize.close()`, with a hard 10-second exit timeout.

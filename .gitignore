@@ -1,0 +1,26 @@
+# Environment variables (Sensitive!)
+.env
+.env.local
+.env.*.local
+
+# Database data (Docker volumes)
+postgres_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pnpm-store/

@@ -1,0 +1,1 @@
+FastAPI microservice that routes player-game decisions to either a Google Gemini LLM or a deterministic fallback, protected by an HMAC token and returning structured AIDecision responses.

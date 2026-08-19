@@ -1,4 +1,20 @@
-const API_BASE = window.location.origin;
+/**
+ * API base URL detection.
+ * - On Vercel (awarquest.vercel.app): route to the deployed backend (Railway).
+ *   Set BACKEND_URL in Vercel environment variables to your Railway URL.
+ *   Fallback: hardcode the known Railway URL if env var is missing.
+ * - On localhost: use the current origin (dev server).
+ */
+const API_BASE = (function () {
+  const host = window.location.hostname;
+  // Vercel deployment — route API to the backend server
+  if (host.includes('vercel.app') || host.includes('awarquest')) {
+    // Override this via Vercel env var or replace the string below with your Railway URL
+    return window.__BACKEND_URL__ || 'https://awarquest-api.up.railway.app';
+  }
+  // Local development — API runs on same origin
+  return window.location.origin;
+})();
 
 /* ── Full scenario data for offline / guest mode ── */
 const MOCK_SCENARIOS = {
@@ -157,10 +173,12 @@ class GameAPI {
   }
 
   async request(path, options = {}) {
-    if (localStorage.getItem('guestMode') === 'true' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    // Guest mode always uses mock data (works on Vercel static hosting)
+    if (localStorage.getItem('guestMode') === 'true') {
       return this.mockRequest(path, options);
     }
 
+    // Non-guest: try real backend; fall back to mock if unreachable (e.g. no backend deployed)
     const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
     if (this.token) headers.Authorization = `Bearer ${this.token}`;
 
@@ -168,7 +186,9 @@ class GameAPI {
     try {
       res = await fetch(`${API_BASE}${path}`, { ...options, headers, credentials: 'include' });
     } catch {
-      throw new Error('Network error. Check your connection and try again.');
+      // If backend is unreachable (no Railway deployed, localhost without docker), fall back to mock
+      console.warn(`[API] Backend unreachable at ${API_BASE}, falling back to mock data.`);
+      return this.mockRequest(path, options);
     }
 
     const data = await res.json().catch(() => ({}));

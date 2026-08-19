@@ -2505,3 +2505,564 @@ body.is-busy .btn.primary { opacity: 0.7; }
   font-weight: 700;
   letter-spacing: 0.03em;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablet (≤768px)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* General */
+  .screen { padding: 1rem; }
+  body { -webkit-tap-highlight-color: transparent; }
+
+  /* Topbar & Stats */
+  .topbar {
+    padding-right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .topbar-actions {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    width: 100%;
+  }
+  .topbar-actions .btn {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.65rem;
+  }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+  .stat { padding: 0.75rem; }
+  .stat span { font-size: 1.4rem; }
+  .stat small { font-size: 0.72rem; }
+
+  /* Mission cards */
+  .mission-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .mission-info p { font-size: 0.8rem; }
+  .mission-meta { gap: 0.35rem; }
+
+  /* Game screen HUD */
+  .game-hud-stack {
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
+  }
+  .hud-top {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .hud-xp {
+    min-width: auto;
+    text-align: left;
+  }
+  .hud-title h2 { font-size: 0.9rem; }
+  .clue-hud {
+    width: 170px;
+    top: 4rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  /* Game sidebar on tablet */
+  .game-sidebar {
+    max-width: none;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Puzzles */
+  .sudoku-cell {
+    width: 42px;
+    height: 42px;
+    font-size: 1.05rem;
+  }
+  .sudoku-4 { grid-template-columns: repeat(4, 42px); }
+  .jigsaw-tile {
+    width: 58px;
+    height: 58px;
+    font-size: 0.95rem;
+  }
+  .jigsaw-board { grid-template-columns: repeat(3, 58px); }
+  .puzzle-card {
+    padding: 1.15rem;
+    max-width: 560px;
+  }
+  .puzzle-overlay {
+    padding: 1rem;
+    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  }
+  .puzzle-option {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.82rem;
+  }
+  .puzzle-prompt { font-size: 0.85rem; }
+
+  /* Auth */
+  .auth-card {
+    padding: 1.75rem 1.5rem;
+    max-width: 400px;
+  }
+  .flower-cluster { transform: scale(0.8); }
+
+  /* Story */
+  .story-chat-shell {
+    padding: 0 0.75rem 0.75rem;
+  }
+  .story-bubble { font-size: 0.85rem; }
+  .story-chat-form {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .story-chat-input { width: 100%; }
+  .story-chat-form .btn { width: 100%; }
+  .story-composer {
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  .story-puzzle-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .story-nav-btn { min-height: 44px; }
+
+  /* Guest intro */
+  .guest-intro-card {
+    padding: 1.5rem 1.25rem;
+    max-height: 92vh;
+  }
+  .guest-intro-header h2 { font-size: 1.3rem; }
+  .guest-intro-takeaways li { font-size: 0.82rem; }
+
+  /* Language selector */
+  .lang-dropdown { right: 0.75rem; top: 4rem; }
+  .lang-panel { width: calc(100vw - 1.5rem); max-width: 320px; }
+
+  /* Briefing panel */
+  .briefing-panel {
+    bottom: 2.5rem;
+    left: 0.75rem;
+    right: 0.75rem;
+  }
+
+  /* Outcome / learning */
+  .outcome-hero { padding: 1rem; }
+  .learning-box { padding: 0.6rem; }
+  .learning-recap-title { font-size: 0.88rem; }
+  .learning-takeaways li { font-size: 0.8rem; }
+  .reward-claim-btn { min-height: 44px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Phone (≤480px)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* General */
+  .screen { padding: 0.75rem; }
+  .btn { min-height: 44px; font-size: 0.82rem; }
+
+  /* Topbar & Stats */
+  .topbar {
+    margin-bottom: 1rem;
+    gap: 0.4rem;
+  }
+  .topbar h2 { font-size: 1.1rem; }
+  .topbar-actions .btn {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.72rem;
+  }
+  .guest-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .stat { padding: 0.6rem 0.5rem; }
+  .stat span { font-size: 1.25rem; }
+  .stat small { font-size: 0.68rem; }
+  .mission-intro { font-size: 0.82rem; margin-bottom: 1rem; }
+  .win-banner { font-size: 0.82rem; padding: 0.75rem 1rem; }
+
+  /* Mission cards */
+  .mission-card { padding: 0.85rem; }
+  .mission-info h3 { font-size: 0.9rem; }
+  .mission-info p { font-size: 0.75rem; }
+  .badge { font-size: 0.65rem; }
+
+  /* Game screen HUD */
+  .game-hud-stack {
+    padding: 0.4rem 0.65rem 0.4rem 0.65rem;
+  }
+  .hud-top {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .hud-btn {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.6rem;
+    min-height: 36px;
+  }
+  .hud-title h2 { font-size: 0.82rem; margin-bottom: 0.15rem; }
+  .hud-xp { text-align: left; }
+  .skill-badge { font-size: 0.7rem; padding: 0.2rem 0.45rem; }
+  .xp-bar { height: 5px; }
+  #xp-label { font-size: 0.65rem; }
+  .game-flow { gap: 0.25rem; }
+  .flow-step { font-size: 0.62rem; }
+  .flow-line { width: 10px; }
+  .phase-badge { font-size: 0.65rem; padding: 0.15rem 0.45rem; }
+
+  .clue-hud {
+    width: 150px;
+    top: 3.5rem;
+    right: 0.4rem;
+    padding: 0.4rem;
+  }
+  .clue-hud h4 { font-size: 0.72rem; }
+  .clue-chip { font-size: 0.6rem; padding: 0.2rem 0.35rem; }
+
+  .briefing-panel {
+    bottom: 1.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0.75rem;
+  }
+  .briefing-panel h3 { font-size: 0.82rem; }
+  .briefing-panel p { font-size: 0.8rem; }
+
+  .controls-hint { font-size: 0.65rem; padding: 0.25rem 0.5rem; }
+  .interact-hint { font-size: 0.78rem; padding: 0.45rem 0.75rem; bottom: 4rem; }
+
+  /* Puzzles */
+  .sudoku-cell {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    border-radius: 5px;
+  }
+  .sudoku-4 { grid-template-columns: repeat(4, 36px); gap: 3px; }
+  .sudoku-grid { gap: 3px; }
+  .sudoku-grid.sudoku-6 { max-width: 240px; }
+  .sudoku-grid.sudoku-6 .sudoku-cell {
+    width: auto;
+    height: 36px;
+  }
+
+  .jigsaw-tile {
+    width: 48px;
+    height: 48px;
+    font-size: 0.82rem;
+    border-radius: 6px;
+  }
+  .jigsaw-board {
+    grid-template-columns: repeat(3, 48px);
+    gap: 3px;
+  }
+  .jigsaw-board.jigsaw-4 { max-width: 220px; }
+  .jigsaw-board.jigsaw-4 .jigsaw-tile {
+    min-height: 44px;
+    font-size: 0.78rem;
+  }
+
+  .puzzle-card {
+    padding: 0.85rem;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+  .puzzle-card-vivid {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .puzzle-overlay {
+    padding: 0.5rem;
+    padding: max(0.5rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) max(0.5rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
+  }
+  .puzzle-header h3 { font-size: 1rem; }
+  .puzzle-intro { font-size: 0.78rem; }
+  .puzzle-option {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+  .puzzle-prompt { font-size: 0.8rem; }
+  .puzzle-feedback { font-size: 0.78rem; }
+  .skill-tip { font-size: 0.7rem; }
+  .puzzle-actions {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .puzzle-actions .btn { width: 100%; min-height: 44px; }
+
+  /* Puzzle types */
+  .crossword-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .crossword-row .puzzle-input {
+    width: 100%;
+    min-width: auto;
+  }
+  .schedule-slot {
+    padding: 0.55rem;
+  }
+  .slot-time { font-size: 0.65rem; }
+  .slot-name { font-size: 0.78rem; }
+  .slot-drop { font-size: 0.72rem; }
+  .schedule-task {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
+  }
+  .math-row {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .math-row .puzzle-input { width: 100%; }
+  .math-q { font-size: 0.78rem; }
+  .brain-ops-row { flex-wrap: wrap; gap: 0.3rem; }
+  .brain-ops-select { min-height: 40px; font-size: 0.85rem; }
+  .brain-ops-part { font-size: 1rem; }
+
+  /* Match pairs */
+  .puzzle-match-row {
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
+  .match-item { font-size: 0.82rem; }
+  .puzzle-match-row select {
+    width: 100%;
+    min-height: 40px;
+    font-size: 0.82rem;
+  }
+
+  /* Pick-many checkboxes */
+  .puzzle-check {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.78rem;
+  }
+  .puzzle-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Auth screen */
+  .auth-card {
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
+    max-width: 100%;
+  }
+  .auth-card h2 { font-size: 1.4rem; }
+  .auth-brand-tagline { font-size: 0.78rem; }
+  .tabs .tab {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+    min-height: 40px;
+  }
+  .field input {
+    min-height: 44px;
+    font-size: 0.88rem;
+  }
+  .auth-submit {
+    width: 100%;
+    min-height: 44px;
+  }
+  .flower-cluster { display: none; }
+  .otp-code-display {
+    font-size: 1.5rem;
+    letter-spacing: 0.35rem;
+    padding: 0.5rem;
+  }
+  .otp-code-box {
+    padding: 0.75rem;
+  }
+  #otp-code-input {
+    min-height: 44px;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+  }
+  .otp-copy { min-height: 36px; }
+  .otp-resend, .otp-back { min-height: 40px; }
+  .pw-rules li { font-size: 0.72rem; }
+  .field-error { font-size: 0.72rem; }
+
+  /* Story viewport */
+  .story-chat-shell {
+    padding: 0 0.5rem 0.5rem;
+  }
+  .story-chat-header {
+    padding: 0.5rem 0 0.5rem;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .story-chapter-progress { font-size: 0.7rem; }
+  .story-scene-title { font-size: 0.78rem; }
+  .story-clock { font-size: 0.72rem; }
+  .story-bubble {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.75rem;
+    line-height: 1.45;
+  }
+  .story-bubble-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.62rem;
+  }
+  .story-bubble-name { font-size: 0.68rem; }
+  .story-thread {
+    padding-bottom: 0.5rem;
+  }
+  .story-chapter-divider {
+    font-size: 0.72rem;
+    padding: 0.35rem 0;
+  }
+  .story-evidence-bar {
+    font-size: 0.68rem;
+    padding: 0.35rem 0;
+  }
+  .story-evidence-chip {
+    font-size: 0.62rem;
+    padding: 0.15rem 0.35rem;
+  }
+  .story-chat-form {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .story-chat-input {
+    min-height: 44px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+  .story-chat-form .btn {
+    width: 100%;
+    min-height: 40px;
+  }
+  .story-composer {
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+  }
+  .story-puzzle-btn {
+    width: 100%;
+    font-size: 0.78rem;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+  }
+  .story-system-hint { font-size: 0.72rem; }
+  .story-resource-box {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* Sidebar panels */
+  .game-sidebar {
+    padding: 0.65rem;
+    max-width: none;
+  }
+  .panel { padding: 0.65rem; }
+  .panel h3 { font-size: 0.88rem; }
+  .option-btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  .resource-link {
+    font-size: 0.78rem;
+    padding: 0.35rem 0;
+  }
+
+  /* Outcome */
+  .outcome-hero { padding: 0.75rem; }
+  .outcome-hero .outcome-badge { font-size: 0.72rem; }
+  .stars-display { font-size: 1.5rem; }
+  .score { font-size: 0.85rem; }
+  .learning-box { padding: 0.5rem; }
+  .learning-recap-title { font-size: 0.82rem; }
+  .learning-takeaways { font-size: 0.78rem; padding-left: 0.9rem; }
+  .learning-takeaways li { margin-bottom: 0.35rem; font-size: 0.78rem; }
+  .learning-clues li { font-size: 0.75rem; }
+  .learning-scheme-card { padding: 0.45rem 0.55rem; }
+  .learning-scheme-link { font-size: 0.78rem; }
+  .learning-scheme-phone { font-size: 0.72rem; }
+  .learning-scheme-desc { font-size: 0.7rem; }
+  .learning-recap-tip { font-size: 0.68rem; }
+  .learning-recap-sub { font-size: 0.78rem; }
+  .tier-badge { font-size: 0.65rem; padding: 0.2rem 0.5rem; }
+  .reward-claim-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.88rem;
+  }
+
+  /* Guest intro overlay */
+  .guest-intro-card {
+    padding: 1.15rem 0.85rem;
+    border-radius: 14px;
+  }
+  .guest-intro-badge { font-size: 0.7rem; padding: 0.25rem 0.65rem; }
+  .guest-intro-header h2 { font-size: 1.15rem; }
+  .guest-intro-mission-title { font-size: 0.78rem; }
+  .guest-intro-sub { font-size: 0.8rem; }
+  .guest-intro-takeaways li {
+    font-size: 0.78rem;
+    padding-left: 1.25rem;
+    line-height: 1.45;
+  }
+  .guest-intro-scheme-card { padding: 0.5rem 0.6rem; }
+  .guest-intro-scheme-link { font-size: 0.8rem; }
+  .guest-intro-scheme-phone { font-size: 0.75rem; }
+  .guest-intro-scheme-desc { font-size: 0.72rem; }
+  .guest-intro-tip { font-size: 0.72rem; padding: 0.5rem 0.6rem; }
+  .guest-intro-continue {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.92rem;
+  }
+
+  /* Language selector */
+  .lang-dropdown {
+    right: 0.5rem;
+    top: 3.5rem;
+  }
+  .lang-btn {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.7rem;
+  }
+  .lang-panel {
+    width: calc(100vw - 1rem);
+    max-width: 300px;
+  }
+  .lang-search-wrap { padding: 0.5rem 0.65rem 0.4rem; }
+  .lang-item { padding: 0.45rem 0.65rem; font-size: 0.72rem; }
+
+  /* Theme toggle */
+  .theme-toggle-wrap { right: 0.5rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Very small phones (≤360px)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  .screen { padding: 0.5rem; }
+  .auth-card { padding: 1rem 0.75rem; }
+  .auth-card h2 { font-size: 1.2rem; }
+  .stats-bar { gap: 0.35rem; }
+  .stat span { font-size: 1.1rem; }
+  .sudoku-cell {
+    width: 32px;
+    height: 32px;
+    font-size: 0.88rem;
+  }
+  .sudoku-4 { grid-template-columns: repeat(4, 32px); gap: 2px; }
+  .jigsaw-tile { width: 42px; height: 42px; font-size: 0.75rem; }
+  .jigsaw-board { grid-template-columns: repeat(3, 42px); gap: 2px; }
+  .story-bubble { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
+  .hud-title h2 { font-size: 0.75rem; }
+  .guest-intro-header h2 { font-size: 1rem; }
+  .topbar h2 { font-size: 1rem; }
+}

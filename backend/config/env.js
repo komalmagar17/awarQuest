@@ -35,5 +35,4 @@ if (error) throw new Error(`Invalid environment configuration: ${error.details.m
 
 env.corsOrigins = env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean);
 env.isProduction = env.NODE_ENV === 'production';
-if (env.isProduction) env.GUEST_PLAY_ENABLED = false;
 module.exports = env;

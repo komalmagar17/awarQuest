@@ -40,7 +40,7 @@ services:
       JWT_REFRESH_SECRET: super_secure_jwt_refresh_secret_key_at_least_48_chars_long_here
       JWT_ACCESS_TTL: 15m
       JWT_REFRESH_TTL: 7d
-      CORS_ORIGINS: http://localhost:3000,http://localhost:5173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:5001,http://127.0.0.1:5001
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:5001,http://127.0.0.1:5001,https://awarquest.vercel.app
       AI_ENABLED: true
       AI_SERVICE_URL: http://ai-service:8001
       AI_SERVICE_TOKEN: secret_internal_ai_token_change_in_production_987654321

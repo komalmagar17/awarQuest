@@ -160,13 +160,17 @@ window.SessionScore = {
     const collected = collectedClueIds || [];
     const apiResources = scenario?.resources || [];
 
+    // Get translated takeaways if available
+    const locTakeaways = window.StoryI18n?.getLearningTakeaways(this.slug);
+    const takeaways = locTakeaways || pack.takeaways || scenario?.learningObjectives || [];
+
     let html = `<div class="learning-recap">`;
 
     html += `<p class="learning-tier-note ${this.tierBadgeClass()}">${this.escapeHtml(this.tierLabel())}</p>`;
 
     html += `<h4 class="learning-recap-title">${window.i18n?.t('whatLearned') || 'What you learned'}</h4>`;
     html += '<ul class="learning-takeaways">';
-    (pack.takeaways || scenario?.learningObjectives || []).forEach((line) => {
+    takeaways.forEach((line) => {
       html += `<li>${this.escapeHtml(line)}</li>`;
     });
     html += '</ul>';

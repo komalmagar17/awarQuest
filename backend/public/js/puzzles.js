@@ -10,9 +10,9 @@ window.MISSION_WORLDS = {
     accent: 0x3b82f6,
     spawn: { x: 0, z: 3.5 },
     objects: [
-      { id: 'phone', label: 'Ringing Phone', clueId: 'clue-urgency', x: -2.2, z: -0.8, color: 0xef4444, shape: 'phone' },
-      { id: 'sms', label: 'SMS Inbox', clueId: 'clue-otp-rule', x: 0, z: -1.5, color: 0x22c55e, shape: 'tablet' },
-      { id: 'bank-app', label: 'Official Bank App', clueId: 'clue-verify', x: 2.2, z: -0.8, color: 0x3b82f6, shape: 'laptop' }
+      { id: 'phone', get label() { return window.i18n?.t('worldPhone') || 'Ringing Phone'; }, clueId: 'clue-urgency', x: -2.2, z: -0.8, color: 0xef4444, shape: 'phone' },
+      { id: 'sms', get label() { return window.i18n?.t('worldSmsInbox') || 'SMS Inbox'; }, clueId: 'clue-otp-rule', x: 0, z: -1.5, color: 0x22c55e, shape: 'tablet' },
+      { id: 'bank-app', get label() { return window.i18n?.t('worldBankApp') || 'Official Bank App'; }, clueId: 'clue-verify', x: 2.2, z: -0.8, color: 0x3b82f6, shape: 'laptop' }
     ]
   },
   'fake-job-offer': {
@@ -22,9 +22,9 @@ window.MISSION_WORLDS = {
     accent: 0xa855f7,
     spawn: { x: 0, z: 3.5 },
     objects: [
-      { id: 'whatsapp', label: 'WhatsApp Message', clueId: 'clue-fee', x: -1.5, z: -1, color: 0x25d366, shape: 'phone' },
-      { id: 'company-site', label: 'Company Website', clueId: 'clue-no-interview', x: 1.5, z: -1, color: 0xf59e0b, shape: 'laptop' },
-      { id: 'verify-desk', label: 'Government Portal', clueId: 'clue-domain', x: 0, z: -2.2, color: 0x3b82f6, shape: 'tablet' }
+      { id: 'whatsapp', get label() { return window.i18n?.t('worldWhatsapp') || 'WhatsApp Message'; }, clueId: 'clue-fee', x: -1.5, z: -1, color: 0x25d366, shape: 'phone' },
+      { id: 'company-site', get label() { return window.i18n?.t('worldCompanySite') || 'Company Website'; }, clueId: 'clue-no-interview', x: 1.5, z: -1, color: 0xf59e0b, shape: 'laptop' },
+      { id: 'verify-desk', get label() { return window.i18n?.t('worldVerifyDesk') || 'Government Portal'; }, clueId: 'clue-domain', x: 0, z: -2.2, color: 0x3b82f6, shape: 'tablet' }
     ]
   },
   'upi-fraud-request': {
@@ -34,9 +34,9 @@ window.MISSION_WORLDS = {
     accent: 0xf97316,
     spawn: { x: 0, z: 3.5 },
     objects: [
-      { id: 'screenshot', label: 'Transfer Screenshot', clueId: 'clue-balance', x: -2, z: -1, color: 0xef4444, shape: 'tablet' },
-      { id: 'upi-app', label: 'Your UPI App', clueId: 'clue-upi-rule', x: 2, z: -1, color: 0x22c55e, shape: 'phone' },
-      { id: 'message', label: 'Stranger Message', clueId: 'clue-pressure', x: 0, z: -2, color: 0xf59e0b, shape: 'phone' }
+      { id: 'screenshot', get label() { return window.i18n?.t('worldScreenshot') || 'Transfer Screenshot'; }, clueId: 'clue-balance', x: -2, z: -1, color: 0xef4444, shape: 'tablet' },
+      { id: 'upi-app', get label() { return window.i18n?.t('worldUpiApp') || 'Your UPI App'; }, clueId: 'clue-upi-rule', x: 2, z: -1, color: 0x22c55e, shape: 'phone' },
+      { id: 'message', get label() { return window.i18n?.t('worldStrangerMsg') || 'Stranger Message'; }, clueId: 'clue-pressure', x: 0, z: -2, color: 0xf59e0b, shape: 'phone' }
     ]
   },
   'scholarship-scam': {
@@ -46,9 +46,9 @@ window.MISSION_WORLDS = {
     accent: 0x10b981,
     spawn: { x: 0, z: 3.5 },
     objects: [
-      { id: 'fake-site', label: 'Scholarship Website', clueId: 'clue-domain', x: -2, z: -1.2, color: 0xef4444, shape: 'laptop' },
-      { id: 'fee-form', label: 'Payment Form', clueId: 'clue-fee', x: 0, z: -2, color: 0xf59e0b, shape: 'tablet' },
-      { id: 'nsp', label: 'Official NSP Portal', clueId: 'clue-nsp', x: 2, z: -1.2, color: 0x22c55e, shape: 'laptop' }
+      { id: 'fake-site', get label() { return window.i18n?.t('worldScholarshipSite') || 'Scholarship Website'; }, clueId: 'clue-domain', x: -2, z: -1.2, color: 0xef4444, shape: 'laptop' },
+      { id: 'fee-form', get label() { return window.i18n?.t('worldFeeForm') || 'Payment Form'; }, clueId: 'clue-fee', x: 0, z: -2, color: 0xf59e0b, shape: 'tablet' },
+      { id: 'nsp', get label() { return window.i18n?.t('worldNsp') || 'Official NSP Portal'; }, clueId: 'clue-nsp', x: 2, z: -1.2, color: 0x22c55e, shape: 'laptop' }
     ]
   },
   'cyberbullying-response': {
@@ -58,23 +58,23 @@ window.MISSION_WORLDS = {
     accent: 0x6366f1,
     spawn: { x: 0, z: 3.5 },
     objects: [
-      { id: 'group-chat', label: 'Group Chat', clueId: 'clue-evidence', x: -1.8, z: -1, color: 0xef4444, shape: 'phone' },
-      { id: 'victim-dm', label: 'Message Victim', clueId: 'clue-support', x: 1.8, z: -1, color: 0x3b82f6, shape: 'phone' },
-      { id: 'report-desk', label: 'Report Desk', clueId: 'clue-report', x: 0, z: -2.2, color: 0x22c55e, shape: 'tablet' }
+      { id: 'group-chat', get label() { return window.i18n?.t('worldGroupChat') || 'Group Chat'; }, clueId: 'clue-evidence', x: -1.8, z: -1, color: 0xef4444, shape: 'phone' },
+      { id: 'victim-dm', get label() { return window.i18n?.t('worldVictimDm') || 'Message Victim'; }, clueId: 'clue-support', x: 1.8, z: -1, color: 0x3b82f6, shape: 'phone' },
+      { id: 'report-desk', get label() { return window.i18n?.t('worldReportDesk') || 'Report Desk'; }, clueId: 'clue-report', x: 0, z: -2.2, color: 0x22c55e, shape: 'tablet' }
     ]
   }
 };
 
 window.SKILL_LABELS = {
-  digital_safety: { name: 'Digital Safety', icon: '🛡️', color: '#3b82f6' },
-  career_awareness: { name: 'Career Smarts', icon: '💼', color: '#a855f7' },
-  career_smarts: { name: 'Career Smarts', icon: '💼', color: '#a855f7' },
-  financial_literacy: { name: 'Money Skills', icon: '💰', color: '#f97316' },
-  money_skills: { name: 'Money Skills', icon: '💰', color: '#f97316' },
-  education_awareness: { name: 'Education Guard', icon: '🎓', color: '#10b981' },
-  education_guard: { name: 'Education Guard', icon: '🎓', color: '#10b981' },
-  mental_health: { name: 'Empathy & Safety', icon: '💜', color: '#6366f1' },
-  empathy_safety: { name: 'Empathy & Safety', icon: '💜', color: '#6366f1' }
+  digital_safety: { get name() { return window.i18n?.t('skillDigitalSafety') || 'Digital Safety'; }, icon: '🛡️', color: '#3b82f6' },
+  career_awareness: { get name() { return window.i18n?.t('skillCareerSmarts') || 'Career Smarts'; }, icon: '💼', color: '#a855f7' },
+  career_smarts: { get name() { return window.i18n?.t('skillCareerSmarts') || 'Career Smarts'; }, icon: '💼', color: '#a855f7' },
+  financial_literacy: { get name() { return window.i18n?.t('skillMoneySkills') || 'Money Skills'; }, icon: '💰', color: '#f97316' },
+  money_skills: { get name() { return window.i18n?.t('skillMoneySkills') || 'Money Skills'; }, icon: '💰', color: '#f97316' },
+  education_awareness: { get name() { return window.i18n?.t('skillEducationGuard') || 'Education Guard'; }, icon: '🎓', color: '#10b981' },
+  education_guard: { get name() { return window.i18n?.t('skillEducationGuard') || 'Education Guard'; }, icon: '🎓', color: '#10b981' },
+  mental_health: { get name() { return window.i18n?.t('skillEmpathySafety') || 'Empathy & Safety'; }, icon: '💜', color: '#6366f1' },
+  empathy_safety: { get name() { return window.i18n?.t('skillEmpathySafety') || 'Empathy & Safety'; }, icon: '💜', color: '#6366f1' }
 };
 
 window.CLUE_PUZZLES = {
@@ -553,6 +553,12 @@ window.PuzzleEngine = {
     const puzzle = window.CLUE_PUZZLES[puzzleId];
     if (!puzzle) return Promise.resolve(true);
 
+    // Get translated puzzle content
+    const locPuzzle = window.StoryI18n?.getCluePuzzle(puzzleId);
+    const pTitle = locPuzzle?.title || puzzle.title;
+    const pIntro = locPuzzle?.intro || puzzle.intro;
+    const pSkillTip = locPuzzle?.skillTip || puzzle.skillTip;
+
     return new Promise((resolve) => {
       const overlay = document.createElement('div');
       overlay.className = 'puzzle-overlay';
@@ -560,8 +566,8 @@ window.PuzzleEngine = {
         <div class="puzzle-card puzzle-card-vivid">
           <div class="puzzle-header">
             <span class="puzzle-badge">${escapeHtml(window.i18n?.t('puzzleChallenge') || 'Challenge')}${puzzle.difficulty ? ` · Lv ${puzzle.difficulty}` : ''}</span>
-            <h3>${escapeHtml(puzzle.title)}</h3>
-            ${puzzle.intro ? `<p class="puzzle-intro">${escapeHtml(puzzle.intro)}</p>` : ''}
+            <h3>${escapeHtml(pTitle)}</h3>
+            ${pIntro ? `<p class="puzzle-intro">${escapeHtml(pIntro)}</p>` : ''}
             <p class="puzzle-attempts" id="puzzle-attempts"></p>
             <p class="puzzle-timer" id="puzzle-timer"></p>
           </div>
@@ -597,7 +603,7 @@ window.PuzzleEngine = {
 
       function onPuzzleFail(msg, tip) {
         if (!useAttempt()) {
-          showFeedback(feedback, false, 'Out of attempts — review the story hint and try again from Back.', tip);
+          showFeedback(feedback, false, window.i18n?.t('puzzleOutOfAttempts') || 'Out of attempts — review the story hint and try again from Back.', pSkillTip);
           return false;
         }
         showFeedback(feedback, false, msg, tip);
@@ -623,7 +629,7 @@ window.PuzzleEngine = {
           timerEl.classList.toggle('urgent', remaining <= 60);
           if (remaining <= 0) {
             clearInterval(timerId);
-            showFeedback(feedback, false, window.i18n?.t('puzzleTimeUp') || 'Time is up!', puzzle.skillTip);
+            showFeedback(feedback, false, window.i18n?.t('puzzleTimeUp') || 'Time is up!', pSkillTip);
             setTimeout(() => cleanup(false), 1500);
           }
           remaining -= 1;
@@ -662,7 +668,7 @@ function showFeedback(el, ok, msg, tip, resources) {
   el.classList.add(ok ? 'ok' : 'fail');
   let html = `${msg}${tip ? `<br><small class="skill-tip">💡 ${escapeHtml(tip)}</small>` : ''}`;
   if (resources?.length) {
-    html += '<div class="puzzle-resources"><strong>Official help:</strong><ul>';
+    html += `<div class="puzzle-resources"><strong>${window.i18n?.t('officialHelp') || 'Official help:'}</strong><ul>`;
     resources.forEach((r) => {
       if (r.url) {
         html += `<li><a href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${escapeHtml(r.title)}</a>${r.phone ? ` · ${escapeHtml(r.phone)}` : ''}</li>`;
@@ -684,15 +690,15 @@ function renderPickOne(body, puzzle, feedback, continueBtn, onSuccess, onFail) {
     btn.addEventListener('click', () => {
       body.querySelectorAll('.puzzle-option').forEach(b => b.disabled = true);
       if (opt.correct) {
-        showFeedback(feedback, true, 'Correct! Real-world safety skill applied.', puzzle.skillTip);
+        showFeedback(feedback, true, window.i18n?.t('puzzleCorrectPickOne') || 'Correct! Real-world safety skill applied.', pSkillTip);
         continueBtn.classList.remove('hidden');
         continueBtn.onclick = onSuccess;
-        window.RewardFX?.xpBurst(50, 'Skill point');
+        window.RewardFX?.xpBurst(50, window.i18n?.t('puzzleSkillPoint') || 'Skill point');
         window.RewardFX?.confetti(16);
       } else {
         body.querySelectorAll('.puzzle-option').forEach(b => { b.disabled = false; });
-        if (onFail) onFail('Not quite — think about what scammers actually do.', puzzle.skillTip);
-        else showFeedback(feedback, false, 'Not quite — think about what scammers actually do.', puzzle.skillTip);
+        if (onFail) onFail(window.i18n?.t('puzzleWrongPickOne') || 'Not quite — think about what scammers actually do.', pSkillTip);
+        else showFeedback(feedback, false, window.i18n?.t('puzzleWrongPickOne') || 'Not quite — think about what scammers actually do.', pSkillTip);
       }
     });
     body.appendChild(btn);
@@ -710,7 +716,7 @@ function renderPickMany(body, puzzle, feedback, continueBtn, onSuccess) {
   const submit = document.createElement('button');
   submit.type = 'button';
   submit.className = 'btn primary puzzle-submit';
-  submit.textContent = 'Check Answer';
+  submit.textContent = window.i18n?.t('puzzleCheckAnswer') || 'Check Answer';
   body.appendChild(submit);
 
   submit.addEventListener('click', () => {
@@ -726,12 +732,14 @@ function renderPickMany(body, puzzle, feedback, continueBtn, onSuccess) {
     if (correctCount >= min && !wrongSelected) {
       checks.forEach(cb => { cb.disabled = true; });
       submit.disabled = true;
-      showFeedback(feedback, true, `✓ You spotted ${correctCount} real-world red flags!`, puzzle.skillTip);
+      const flagsMsg = (window.i18n?.t('puzzleSpottedFlags') || '✓ You spotted {count} real-world red flags!').replace('{count}', correctCount);
+      showFeedback(feedback, true, flagsMsg, pSkillTip);
       continueBtn.classList.remove('hidden');
       continueBtn.onclick = onSuccess;
-      window.dispatchEvent(new CustomEvent('game:xp', { detail: { amount: 75, label: 'Detective bonus' } }));
+      window.dispatchEvent(new CustomEvent('game:xp', { detail: { amount: 75, label: window.i18n?.t('puzzleDetectiveBonus') || 'Detective bonus' } }));
     } else {
-      showFeedback(feedback, false, `Find at least ${min} correct signs without picking safe/normal ones.`, puzzle.skillTip);
+      const minMsg = (window.i18n?.t('puzzleFindMinCorrect') || 'Find at least {min} correct signs without picking safe/normal ones.').replace('{min}', min);
+      showFeedback(feedback, false, minMsg, pSkillTip);
     }
   });
 }
@@ -744,7 +752,7 @@ function renderMatchPairs(body, puzzle, feedback, continueBtn, onSuccess) {
     row.innerHTML = `
       <span class="match-item">${escapeHtml(pair.item)}</span>
       <select data-pair="${i}">
-        <option value="">Choose…</option>
+        <option value="">${window.i18n?.t('puzzleChoose') || 'Choose…'}</option>
         ${puzzle.choices.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
       </select>
     `;
@@ -753,7 +761,7 @@ function renderMatchPairs(body, puzzle, feedback, continueBtn, onSuccess) {
   const submit = document.createElement('button');
   submit.type = 'button';
   submit.className = 'btn primary puzzle-submit';
-  submit.textContent = 'Verify Matches';
+  submit.textContent = window.i18n?.t('puzzleVerifyMatches') || 'Verify Matches';
   body.appendChild(submit);
 
   submit.addEventListener('click', () => {
@@ -764,12 +772,12 @@ function renderMatchPairs(body, puzzle, feedback, continueBtn, onSuccess) {
     if (allCorrect) {
       body.querySelectorAll('select').forEach(s => { s.disabled = true; });
       submit.disabled = true;
-      showFeedback(feedback, true, '✓ Perfect! You matched real-world verification steps.', puzzle.skillTip);
+      showFeedback(feedback, true, window.i18n?.t('puzzlePerfectMatch') || '✓ Perfect! You matched real-world verification steps.', pSkillTip);
       continueBtn.classList.remove('hidden');
       continueBtn.onclick = onSuccess;
-      window.dispatchEvent(new CustomEvent('game:xp', { detail: { amount: 60, label: 'Analyst bonus' } }));
+      window.dispatchEvent(new CustomEvent('game:xp', { detail: { amount: 60, label: window.i18n?.t('puzzleAnalystBonus') || 'Analyst bonus' } }));
     } else {
-      showFeedback(feedback, false, 'Some matches are wrong — think about official vs unofficial channels.', puzzle.skillTip);
+      showFeedback(feedback, false, window.i18n?.t('puzzleSomeWrong') || 'Some matches are wrong — think about official vs unofficial channels.', pSkillTip);
     }
   });
 }

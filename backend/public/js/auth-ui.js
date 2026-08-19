@@ -188,18 +188,21 @@ function clearFieldError(input) {
 
 function validateEmailField(input, { allowEmpty = false } = {}) {
   const value = input.value.trim();
+  const t = window.i18n?.t?.bind(window.i18n) || ((k) => k);
   if (!value) {
     if (allowEmpty) {
       clearFieldError(input);
       return true;
     }
-    showFieldError(input, 'Please enter a valid email address.');
-    alert('Please enter a valid email address.');
+    const msg = t('enterValidEmail');
+    showFieldError(input, msg);
+    alert(msg);
     return false;
   }
   if (!isValidEmail(value)) {
-    showFieldError(input, 'Please enter a valid email address.');
-    alert('Please enter a valid email address.');
+    const msg = t('enterValidEmail');
+    showFieldError(input, msg);
+    alert(msg);
     return false;
   }
   clearFieldError(input);
@@ -208,14 +211,17 @@ function validateEmailField(input, { allowEmpty = false } = {}) {
 
 function validateLoginIdentifier(input) {
   const value = input.value.trim();
+  const t = window.i18n?.t?.bind(window.i18n) || ((k) => k);
   if (!value) {
-    showFieldError(input, 'Please enter your email or username.');
-    alert('Please enter your email or username.');
+    const msg = t('enterEmailOrUsername');
+    showFieldError(input, msg);
+    alert(msg);
     return false;
   }
   if (value.includes('@') && !isValidEmail(value)) {
-    showFieldError(input, 'Please enter a valid email address.');
-    alert('Please enter a valid email address.');
+    const msg = t('enterValidEmail');
+    showFieldError(input, msg);
+    alert(msg);
     return false;
   }
   clearFieldError(input);

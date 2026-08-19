@@ -49,7 +49,7 @@
         </span>
         <span class="theme-toggle-thumb"></span>
       </span>
-      <span class="theme-toggle-text"><span class="t-day">Day</span><span class="t-night">Night</span></span>
+      <span class="theme-toggle-text"><span class="t-day" data-i18n="day">Day</span><span class="t-night" data-i18n="night">Night</span></span>
     </button>
 
     <!-- Auth Screen -->
@@ -168,78 +168,78 @@
         </div>
         <div class="brand">
           <div class="brand-mark"><span>AQ</span></div>
-          <h1>AwarQuest</h1>
-          <p>Explore 3D scenarios, solve real-world puzzles, and level up skills you actually need</p>
+          <h1 data-i18n="brandName">AwarQuest</h1>
+          <p data-i18n="brandTagline">Explore 3D scenarios, solve real-world puzzles, and level up skills you actually need</p>
         </div>
         <div class="tabs">
-          <button class="tab active" data-tab="login">Login</button>
-          <button class="tab" data-tab="register">Register</button>
+          <button class="tab active" data-tab="login" data-i18n="login">Login</button>
+          <button class="tab" data-tab="register" data-i18n="register">Register</button>
         </div>
         <form id="form-login" class="auth-form">
           <label class="field">
-            <span class="field-label">Email or Username</span>
-            <input type="text" name="identifier" id="login-identifier" required placeholder="you@example.com or player1" autocomplete="username">
+            <span class="field-label" data-i18n="emailOrUsername">Email or Username</span>
+            <input type="text" name="identifier" id="login-identifier" required placeholder="you@example.com or player1" autocomplete="username" data-i18n-placeholder="loginIdentifierPlaceholder">
             <span class="field-error hidden" data-for="login-identifier"></span>
           </label>
           <label class="field">
-            <span class="field-label">Password</span>
+            <span class="field-label" data-i18n="password">Password</span>
             <input type="password" name="password" required placeholder="••••••••" autocomplete="current-password">
           </label>
           <button type="submit" class="btn primary auth-submit">
-            <span class="btn-text">Enter the Adventure</span>
+            <span class="btn-text" data-i18n="enterAdventure">Enter the Adventure</span>
             <span class="btn-shine"></span>
           </button>
-          <div class="auth-divider"><span>or</span></div>
+          <div class="auth-divider"><span data-i18n="or">or</span></div>
           <button type="button" id="btn-guest-play" class="btn guest-play">
-            <span class="btn-text">▶ Play as Guest — No Login</span>
+            <span class="btn-text" data-i18n="playGuest">▶ Play as Guest — No Login</span>
           </button>
-          <p class="guest-note">Try all 5 quests level-by-level. Login &amp; email verification available when deployed.</p>
+          <p class="guest-note" data-i18n="guestNote">Try all 5 quests level-by-level. Login &amp; email verification available when deployed.</p>
         </form>
         <form id="form-register" class="auth-form hidden">
           <label class="field">
-            <span class="field-label">Username</span>
+            <span class="field-label" data-i18n="username">Username</span>
             <input type="text" name="username" required placeholder="player1" minlength="3" autocomplete="username">
           </label>
           <label class="field">
-            <span class="field-label">Email</span>
+            <span class="field-label" data-i18n="email">Email</span>
             <input type="email" name="email" id="register-email" required placeholder="you@example.com" autocomplete="email">
             <span class="field-error hidden" data-for="register-email"></span>
           </label>
           <label class="field">
-            <span class="field-label">Password</span>
-            <input type="password" name="password" id="register-password" required placeholder="Create a strong password" autocomplete="new-password">
+            <span class="field-label" data-i18n="password">Password</span>
+            <input type="password" name="password" id="register-password" required placeholder="Create a strong password" autocomplete="new-password" data-i18n-placeholder="createPasswordPlaceholder">
           </label>
           <ul id="password-rules" class="password-rules" aria-live="polite">
-            <li data-rule="length">At least 8 characters</li>
-            <li data-rule="lower">One lowercase letter</li>
-            <li data-rule="upper">One uppercase letter</li>
-            <li data-rule="digit">One number</li>
-            <li data-rule="special">One special character</li>
+            <li data-rule="length" data-i18n="pwRuleLength">At least 8 characters</li>
+            <li data-rule="lower" data-i18n="pwRuleLower">One lowercase letter</li>
+            <li data-rule="upper" data-i18n="pwRuleUpper">One uppercase letter</li>
+            <li data-rule="digit" data-i18n="pwRuleDigit">One number</li>
+            <li data-rule="special" data-i18n="pwRuleSpecial">One special character</li>
           </ul>
           <button type="submit" class="btn primary auth-submit">
-            <span class="btn-text">Create Hero Profile</span>
+            <span class="btn-text" data-i18n="createProfile">Create Hero Profile</span>
             <span class="btn-shine"></span>
           </button>
         </form>
         <form id="form-otp" class="auth-form hidden">
-          <p id="otp-message" class="otp-message">Enter the 6-digit code sent to your email.</p>
+          <p id="otp-message" class="otp-message" data-i18n="otpMessage">Enter the 6-digit code sent to your email.</p>
           <div id="otp-code-box" class="otp-code-box hidden">
-            <span class="otp-code-label">Your verification code</span>
+            <span class="otp-code-label" data-i18n="otpCodeLabel">Your verification code</span>
             <div id="otp-code-display" class="otp-code-display">000000</div>
-            <button type="button" id="btn-copy-otp" class="btn ghost sm otp-copy">Copy code</button>
-            <p class="otp-code-note">Email is not configured yet — use this code to continue.</p>
+            <button type="button" id="btn-copy-otp" class="btn ghost sm otp-copy" data-i18n="copyCode">Copy code</button>
+            <p class="otp-code-note" data-i18n="otpDevNote">Email is not configured yet — use this code to continue.</p>
           </div>
           <p id="otp-dev-hint" class="otp-dev-hint hidden"></p>
           <label class="field">
-            <span class="field-label">Verification Code</span>
+            <span class="field-label" data-i18n="verificationCode">Verification Code</span>
             <input type="text" name="code" id="otp-code-input" required placeholder="000000" maxlength="6" pattern="\d{6}" inputmode="numeric" autocomplete="one-time-code">
           </label>
           <button type="submit" class="btn primary auth-submit">
-            <span class="btn-text">Verify &amp; Continue</span>
+            <span class="btn-text" data-i18n="verifyContinue">Verify &amp; Continue</span>
             <span class="btn-shine"></span>
           </button>
-          <button type="button" id="btn-resend-otp" class="btn ghost sm otp-resend">Resend code</button>
-          <button type="button" id="btn-back-auth" class="btn ghost sm otp-back">← Back to login</button>
+          <button type="button" id="btn-resend-otp" class="btn ghost sm otp-resend" data-i18n="resendCode">Resend code</button>
+          <button type="button" id="btn-back-auth" class="btn ghost sm otp-back" data-i18n="backToLogin">← Back to login</button>
         </form>
         <p id="auth-error" class="error hidden"></p>
       </div>
@@ -249,8 +249,8 @@
     <section id="screen-missions" class="screen">
       <header class="topbar">
         <div>
-          <h2>Skill Quests</h2>
-          <p id="player-greeting">Welcome, Player</p>
+          <h2 data-i18n="skillQuests">Skill Quests</h2>
+          <p id="player-greeting" data-i18n="welcomePlayer">Welcome, Player</p>
         </div>
         <div class="topbar-actions">
           <span id="guest-badge" class="guest-badge hidden" data-i18n="guestMode">Guest Mode</span>
@@ -259,15 +259,15 @@
         </div>
       </header>
       <div class="stats-bar">
-        <div class="stat"><span id="stat-completed">0</span><small>Quests Done</small></div>
-        <div class="stat"><span id="stat-stars">0</span><small>Total Stars</small></div>
-        <div class="stat"><span id="stat-xp">0</span><small>Skill XP</small></div>
-        <div class="stat"><span id="stat-total">5</span><small>Quests</small></div>
+        <div class="stat"><span id="stat-completed">0</span><small data-i18n="questsDone">Quests Done</small></div>
+        <div class="stat"><span id="stat-stars">0</span><small data-i18n="totalStars">Total Stars</small></div>
+        <div class="stat"><span id="stat-xp">0</span><small data-i18n="skillXp">Skill XP</small></div>
+        <div class="stat"><span id="stat-total">5</span><small data-i18n="questsCount">Quests</small></div>
       </div>
-      <div id="win-banner" class="win-banner hidden">
+      <div id="win-banner" class="win-banner hidden" data-i18n="winBanner">
         🏆 Skill Master! You completed every quest with excellence — you're ready for real-world challenges!
       </div>
-      <p class="mission-intro">Each quest is an interactive story with puzzles — Sudoku, logic, crosswords, jigsaw &amp; time-planning challenges. Complete levels in order.</p>
+      <p class="mission-intro" data-i18n="missionIntro">Each quest is an interactive story with puzzles — Sudoku, logic, crosswords, jigsaw &amp; time-planning challenges. Complete levels in order.</p>
       <div id="mission-list" class="mission-list"></div>
     </section>
 
@@ -281,7 +281,7 @@
               <h2 id="game-title">Quest</h2>
             </div>
             <div class="hud-xp">
-              <span id="skill-badge" class="skill-badge">Digital Safety</span>
+              <span id="skill-badge" class="skill-badge" data-i18n="digitalSafety">Digital Safety</span>
               <div class="xp-bar"><div id="xp-fill" class="xp-fill"></div></div>
               <span id="xp-label">0 XP</span>
             </div>
@@ -295,17 +295,17 @@
             <span class="flow-line"></span>
             <span class="flow-step" data-flow="complete" data-i18n="flowComplete">Complete</span>
           </div>
-          <div class="phase-badge" id="phase-badge">Briefing</div>
+          <div class="phase-badge" id="phase-badge" data-i18n="briefing">Briefing</div>
         </header>
 
         <div id="story-viewport" class="story-viewport hidden">
           <div class="story-chat-shell">
             <header class="story-chat-header">
               <div class="story-chat-header-main">
-                <span id="story-chapter-progress" class="story-chapter-progress">Chapter 1 of 3</span>
-                <p id="story-scene-title" class="story-scene-title">Scene</p>
+                <span id="story-chapter-progress" class="story-chapter-progress" data-i18n="chapterProgress">Chapter 1 of 3</span>
+                <p id="story-scene-title" class="story-scene-title" data-i18n="scene">Scene</p>
               </div>
-              <span id="story-clock" class="story-clock">6h 00m left</span>
+              <span id="story-clock" class="story-clock" data-i18n="timeLeft">6h 00m left</span>
             </header>
             <div id="story-evidence-bar" class="story-evidence-bar"></div>
             <div id="story-thread" class="story-thread" aria-live="polite"></div>
@@ -332,7 +332,7 @@
         </div>
 
         <div id="interact-hint" class="interact-hint hidden">
-          <kbd>E</kbd> or <strong>Click</strong> — <span id="interact-label">Investigate</span>
+          <kbd>E</kbd> or <strong>Click</strong> — <span id="interact-label" data-i18n="investigate">Investigate</span>
         </div>
 
         <div id="clue-hud" class="hud-panel clue-hud">
@@ -341,7 +341,7 @@
         </div>
 
         <div id="controls-hint" class="controls-hint">
-          <span>WASD move</span> · <span>Mouse look</span> · <span>Click scene to start</span>
+          <span data-i18n="wasdMove">WASD move</span> · <span data-i18n="mouseLook">Mouse look</span> · <span data-i18n="clickToStart">Click scene to start</span>
         </div>
       </div>
 
@@ -390,16 +390,16 @@
     <div id="modal-progress" class="modal hidden">
       <div class="modal-content">
         <button class="modal-close" data-close="modal-progress">×</button>
-        <h3>Your Skill Journey</h3>
+        <h3 data-i18n="yourSkillJourney">Your Skill Journey</h3>
         <div id="progress-details"></div>
         <div class="how-to-win">
-          <h4>How to Master the Game</h4>
+          <h4 data-i18n="howToMaster">How to Master the Game</h4>
           <ol>
-            <li>Enter each <strong>3D quest scene</strong> and explore with WASD</li>
-            <li><strong>Investigate objects</strong> — solve the skill puzzle to collect evidence</li>
-            <li>Make the <strong>safest real-world decision</strong> (earn 3 stars)</li>
-            <li>Chat with <strong>Life Guide</strong> when stuck</li>
-            <li>Use <strong>Verified Resources</strong> to learn official help channels</li>
+            <li data-i18n="howStep1">Enter each <strong>3D quest scene</strong> and explore with WASD</li>
+            <li data-i18n="howStep2"><strong>Investigate objects</strong> — solve the skill puzzle to collect evidence</li>
+            <li data-i18n="howStep3">Make the <strong>safest real-world decision</strong> (earn 3 stars)</li>
+            <li data-i18n="howStep4">Chat with <strong>Life Guide</strong> when stuck</li>
+            <li data-i18n="howStep5">Use <strong>Verified Resources</strong> to learn official help channels</li>
           </ol>
         </div>
       </div>
@@ -407,13 +407,13 @@
 
     <div id="reward-celebration" class="reward-celebration hidden">
       <div class="reward-card">
-        <div id="reward-badge" class="reward-badge">Quest Cleared</div>
-        <h2 id="reward-title">Level Complete!</h2>
+        <div id="reward-badge" class="reward-badge" data-i18n="questCleared">Quest Cleared</div>
+        <h2 id="reward-title" data-i18n="levelComplete">Level Complete!</h2>
         <p id="reward-subtitle" class="reward-subtitle"></p>
         <div id="reward-stars" class="reward-stars"></div>
         <div id="reward-xp" class="reward-xp">+0 XP</div>
         <p id="reward-total" class="reward-total"></p>
-        <button type="button" id="reward-dismiss" class="btn primary pulse-btn reward-claim-btn">Continue</button>
+        <button type="button" id="reward-dismiss" class="btn primary pulse-btn reward-claim-btn" data-i18n="continue">Continue</button>
       </div>
     </div>
 

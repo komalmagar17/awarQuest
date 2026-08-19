@@ -1,8 +1,8 @@
 const PHASE_LABELS = {
-  presentation: 'Briefing',
-  exploration: 'Investigation',
-  reveal: 'Decision Made',
-  completed: 'Complete'
+  get presentation() { return window.i18n?.t('phasePresentation') || 'Briefing'; },
+  get exploration() { return window.i18n?.t('phaseExploration') || 'Investigation'; },
+  get reveal() { return window.i18n?.t('phaseReveal') || 'Decision Made'; },
+  get completed() { return window.i18n?.t('phaseCompleted') || 'Complete'; }
 };
 
 const state = {
@@ -84,14 +84,14 @@ function showOtpStep(data) {
   const devHint = $('#otp-dev-hint');
 
   if (data.devOtp) {
-    $('#otp-message').textContent = `Enter the code below to verify ${data.email || 'your account'}.`;
+    $('#otp-message').textContent = `${window.i18n.t('otpMessage')} (${data.email || 'your account'}).`;
     codeDisplay.textContent = data.devOtp;
     codeBox.classList.remove('hidden');
     codeInput.value = data.devOtp;
     devHint.classList.add('hidden');
-    toast(`Your code is ${data.devOtp}`);
+    toast(`${window.i18n.t('yourCodeIs')} ${data.devOtp}`);
   } else {
-    $('#otp-message').textContent = data.message || `Enter the 6-digit code sent to ${data.email}.`;
+    $('#otp-message').textContent = data.message || window.i18n.t('otpMessage');
     codeBox.classList.add('hidden');
     codeInput.value = '';
     devHint.classList.add('hidden');
@@ -104,7 +104,7 @@ function showOtpStep(data) {
 $('#btn-copy-otp')?.addEventListener('click', () => {
   const code = $('#otp-code-input')?.value;
   if (!code) return;
-  navigator.clipboard.writeText(code).then(() => toast('Code copied!')).catch(() => toast(code));
+  navigator.clipboard.writeText(code).then(() => toast(window.i18n.t('codeCopied'))).catch(() => toast(code));
 });
 
 function setBusy(isBusy) {
@@ -179,7 +179,7 @@ function updateXpHud() {
 
 function updateSkillBadge() {
   const tag = (state.scenario?.skillTags || [])[0] || 'digital_safety';
-  const skill = window.SKILL_LABELS?.[tag] || { name: 'Life Skills' };
+  const skill = window.SKILL_LABELS?.[tag] || { name: window.i18n?.t('skillDigitalSafety') || 'Digital Safety' };
   const el = $('#skill-badge');
   if (el) el.textContent = skill.name;
 }
@@ -217,7 +217,7 @@ $('#form-login').addEventListener('submit', (e) => {
 
     if (window.AuthUI && !window.AuthUI.validateLoginIdentifier(identifierInput)) return;
     if (window.AuthUI && !window.AuthUI.isStrongPassword(password)) {
-      showError($('#auth-error'), 'Password must include uppercase, lowercase, a number, and a special character.');
+      showError($('#auth-error'), window.i18n.t('passwordWeakError'));
       return;
     }
     try {
@@ -225,10 +225,10 @@ $('#form-login').addEventListener('submit', (e) => {
       showOtpStep(data);
     } catch (err) {
       if (err.code === 'NOT_REGISTERED') {
-        showError($('#auth-error'), 'You are not registered. Please register.');
-        alert('You are not registered. Please register.');
+        showError($('#auth-error'), window.i18n.t('notRegistered'));
+        alert(window.i18n.t('notRegistered'));
         window.AuthUI?.switchToRegisterTab();
-        toast('Create an account to start playing.');
+        toast(window.i18n.t('createAccountHint'));
       } else {
         showError($('#auth-error'), err.message);
       }
@@ -246,7 +246,7 @@ $('#form-register').addEventListener('submit', (e) => {
 
     if (window.AuthUI && !window.AuthUI.validateEmailField(emailInput)) return;
     if (window.AuthUI && !window.AuthUI.isStrongPassword(password)) {
-      showError($('#auth-error'), 'Password must include uppercase, lowercase, a number, and a special character.');
+      showError($('#auth-error'), window.i18n.t('passwordWeakError'));
       window.AuthUI.updatePasswordRules(password);
       return;
     }
@@ -285,7 +285,7 @@ $('#btn-resend-otp').addEventListener('click', () => {
     try {
       const data = await window.api.resendOtp(otpState.sessionId);
       showOtpStep(data);
-      toast('New verification code sent.');
+      toast(window.i18n.t('newCodeSent'));
     } catch (err) {
       showError($('#auth-error'), err.message);
     }
@@ -303,7 +303,7 @@ $('#btn-guest-play').addEventListener('click', () => {
     hideError($('#auth-error'));
     try {
       const api = window.api;
-      if (!api) throw new Error('System initialization incomplete. Please refresh.');
+      if (!api) throw new Error(window.i18n.t('systemInitError'));
       await window.api.guestLogin();
       if (window.AuthUI?.transitionToMissions) {
         await window.AuthUI.transitionToMissions(loadMissions);
@@ -311,7 +311,7 @@ $('#btn-guest-play').addEventListener('click', () => {
         await loadMissions();
         showScreen('missions');
       }
-      toast('Guest mode — Quest 1 is ready. Complete each level to unlock the next.');
+      toast(window.i18n.t('guestModeReady'));
     } catch (err) {
       showError($('#auth-error'), err.message);
     }
@@ -400,8 +400,8 @@ async function loadMissions() {
   const isGuest = window.api.user?.isGuest;
   $('#guest-badge')?.classList.toggle('hidden', !isGuest);
   $('#player-greeting').textContent = isGuest
-    ? 'Welcome, Guest Player — explore quest by quest'
-    : `Welcome, ${window.api.user?.username || 'Player'}`;
+    ? window.i18n.t('welcomeGuestPlayer')
+    : `${window.i18n.t('welcomePlayer').replace('Player', window.api.user?.username || 'Player')}`;
   $('#stat-completed').textContent = summary.missionsCompleted ?? state.progress.filter(p => p.status === 'completed').length;
   $('#stat-stars').textContent = summary.totalStars ?? state.progress.filter(p => p.status === 'completed').reduce((s, p) => s + (p.bestStars || 0), 0);
   $('#stat-xp').textContent = totalXp;
@@ -420,7 +420,7 @@ function renderMissionList() {
   list.innerHTML = '';
 
   if (!state.missions.length) {
-    list.innerHTML = '<p class="empty-state">No quests available yet. Run the seed script on the server.</p>';
+    list.innerHTML = `<p class="empty-state">${window.i18n.t('noQuestsAvailable')}</p>`;
     return;
   }
 
@@ -433,27 +433,39 @@ function renderMissionList() {
     const locked = !prevDone;
     const skillTag = (mission.skillTags || [])[0];
     const skill = window.SKILL_LABELS?.[skillTag] || { icon: '🎯', name: 'Life Skills' };
+    const t = window.i18n.t.bind(window.i18n);
+
+    // Get translated mission title/summary by slug
+    const slugToKey = { 'otp-scam-alert': 1, 'fake-job-offer': 2, 'upi-fraud-request': 3, 'cyberbullying-response': 4, 'scholarship-scam': 5 };
+    const keyNum = slugToKey[mission.slug];
+    const locTitle = keyNum ? (t(`missionTitle${keyNum}`) !== `missionTitle${keyNum}` ? t(`missionTitle${keyNum}`) : mission.title) : mission.title;
+    const locSummary = keyNum ? (t(`missionSummary${keyNum}`) !== `missionSummary${keyNum}` ? t(`missionSummary${keyNum}`) : mission.summary) : mission.summary;
+
     const card = document.createElement('div');
     card.className = `mission-card${done ? ' completed' : ''}${locked ? ' locked' : ''}`;
     card.innerHTML = `
       <div class="mission-info">
-        <h3>${locked ? '🔒 ' : ''}${escapeHtml(mission.title)}</h3>
-        <p>${escapeHtml(mission.summary || '')}</p>
+        <h3>${locked ? '🔒 ' : ''}${escapeHtml(locTitle)}</h3>
+        <p>${escapeHtml(locSummary || '')}</p>
         <div class="mission-meta">
           <span class="badge">${escapeHtml(skill.name)}</span>
-          <span class="badge">Level ${idx + 1}</span>
-          <span class="badge">Difficulty ${mission.difficulty}</span>
-          ${locked ? '<span class="badge locked-badge">Complete previous level first</span>' : ''}
-          ${done ? '<span class="badge done">Completed</span>' : ''}
+          <span class="badge">${t('levelLabel')} ${idx + 1}</span>
+          <span class="badge">${t('difficultyLabel')} ${mission.difficulty}</span>
+          ${locked ? `<span class="badge locked-badge">${t('completePrevFirst')}</span>` : ''}
+          ${done ? `<span class="badge done">${t('completed')}</span>` : ''}
         </div>
       </div>
       <div>
-        ${done ? `<div class="stars">${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>` : `<span class="badge">${locked ? 'Locked' : `Quest ${idx + 1}`}</span>`}
+        ${done ? `<div class="stars">${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>` : `<span class="badge">${locked ? t('locked') : `${t('questLabel')} ${idx + 1}`}</span>`}
       </div>
     `;
     card.addEventListener('click', () => {
       if (locked) {
-        toast(`Complete "${prevMission.title.replace(/^Mission \d+: /, '')}" first to unlock this level.`);
+        const prevLocTitle = prevMission ? (() => {
+          const prevNum = slugToKey[prevMission.slug];
+          return prevNum ? (t(`missionTitle${prevNum}`) !== `missionTitle${prevNum}` ? t(`missionTitle${prevNum}`) : prevMission.title) : prevMission.title;
+        })() : '';
+        toast(t('completeFirstToUnlock').replace('{title}', prevLocTitle.replace(/^Mission \d+: /, '')));
         return;
       }
       withBusy(() => startMission(mission));
@@ -483,7 +495,7 @@ async function startMission(mission) {
 
 function beginStory() {
   if (!window.StoryEngine) {
-    toast('Story engine loading…');
+    toast(window.i18n.t('storyEngineLoading'));
     return;
   }
   $('#briefing-panel').classList.add('hidden');
@@ -519,7 +531,7 @@ async function loadResources(scenarioId) {
     list.innerHTML = '';
     const items = res.data || [];
     if (!items.length) {
-      list.innerHTML = '<p class="muted-text">No verified resources linked.</p>';
+      list.innerHTML = `<p class="muted-text">${window.i18n.t('noResourcesLinked')}</p>`;
       return;
     }
     items.forEach(r => {
@@ -532,7 +544,7 @@ async function loadResources(scenarioId) {
       list.appendChild(a);
     });
   } catch {
-    $('#resource-list').innerHTML = '<p class="muted-text">Resources unavailable.</p>';
+    $('#resource-list').innerHTML = `<p class="muted-text">${window.i18n.t('resourcesUnavailable')}</p>`;
   }
 }
 
@@ -540,7 +552,7 @@ async function handleObjectInteract(data) {
   if (!data?.clueId || state.busy) return;
   const collected = state.gameState.collectedClueIds || [];
   if (collected.includes(data.clueId)) {
-    toast('Evidence already collected.');
+    toast(window.i18n.t('evidenceAlreadyCollected'));
     return;
   }
   if (state.gameState.phase === 'reveal' || state.gameState.phase === 'completed') return;
@@ -627,7 +639,7 @@ async function collectClue(clueId) {
   const xp = 45;
   window.RewardFX?.xpBurst(xp, window.i18n?.t('evidenceSecured') || 'Evidence');
   renderGame();
-  addChatMessage('guide', res.data.revealedClue?.description || 'Evidence logged. Keep going!');
+  addChatMessage('guide', res.data.revealedClue?.description || window.i18n.t('evidenceLoggedKeepGoing'));
 }
 
 async function chooseOption(optionId) {
@@ -720,9 +732,9 @@ $('#form-chat')?.addEventListener('submit', (e) => {
       if (payload.alert) {
         addChatMessage('alert', `${payload.alert.type}: ${payload.alert.priority} priority alert`);
       }
-      addChatMessage('guide', payload.message || 'Keep investigating the glowing objects in the 3D scene.');
+      addChatMessage('guide', payload.message || window.i18n.t('keepInvestigating'));
     } catch (err) {
-      addChatMessage('guide', err.message || 'Explore the scene and solve each skill puzzle.');
+      addChatMessage('guide', err.message || window.i18n.t('exploreSceneSolvePuzzle'));
     }
   });
 });
@@ -748,7 +760,7 @@ async function showProgressModal() {
     item.className = 'progress-item';
     item.innerHTML = `
       <span>${escapeHtml(m.title.replace(/^Mission \d+: /, ''))}</span>
-      <span>${prog?.status === 'completed' ? `${'★'.repeat(prog.bestStars || 0)} Done` : 'Not started'}</span>
+      <span>${prog?.status === 'completed' ? `${'★'.repeat(prog.bestStars || 0)} ${window.i18n.t('done')}` : window.i18n.t('notStarted')}</span>
     `;
     details.appendChild(item);
   });
@@ -806,12 +818,16 @@ async function init() {
   initAiKeySettings();
   window.addEventListener('locale:change', () => {
     window.i18n?.apply();
+    if (state.missions.length && document.getElementById('screen-missions')?.classList.contains('active')) {
+      renderMissionList();
+    }
     if (state.scenario && document.getElementById('screen-game')?.classList.contains('active')) {
       renderGame();
     }
     if (window.StoryEngine?.script && !document.getElementById('story-viewport')?.classList.contains('hidden')) {
       window.StoryEngine._slug = window.StoryEngine._slug || 'otp-scam-alert';
       window.StoryEngine.script = window.StoryEngine.getScript(window.StoryEngine._slug);
+      window.StoryEngine.rebuildThread?.();
       window.StoryEngine.renderChapterHeader();
       window.StoryEngine.syncEvidenceBar();
       window.StoryEngine.setComposerMode(window.StoryEngine.awaitingDecision ? 'decision' : 'chat');

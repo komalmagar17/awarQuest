@@ -38,14 +38,14 @@ window.RewardFX = {
     const totalEl = modal.querySelector('#reward-total');
     const badge = modal.querySelector('#reward-badge');
 
-    title.textContent = opts.title || 'Level Complete!';
+    title.textContent = opts.title || window.i18n?.t('levelComplete') || 'Level Complete!';
     subtitle.textContent = opts.subtitle || '';
     xpEl.textContent = opts.xp != null ? `+${opts.xp} XP` : '';
     totalEl.textContent = opts.totalXp != null ? `Total: ${opts.totalXp} XP` : '';
     starsEl.innerHTML = opts.stars != null
       ? `${'★'.repeat(opts.stars)}${'☆'.repeat(3 - opts.stars)}`
       : '';
-    badge.textContent = opts.badge || 'Quest Cleared';
+    badge.textContent = opts.badge || window.i18n?.t('questCleared') || 'Quest Cleared';
     badge.className = `reward-badge${opts.perfect ? ' perfect' : ''}`;
 
     modal.classList.remove('hidden');

@@ -1,0 +1,33 @@
+# Ignore backend source code (only static files are needed)
+backend/ai-service/
+backend/config/
+backend/controllers/
+backend/docs/
+backend/middleware/
+backend/migrations/
+backend/models/
+backend/node_modules/
+backend/routes/
+backend/scripts/
+backend/services/
+backend/sockets/
+backend/test/
+backend/utils/
+backend/validators/
+backend/.env
+backend/.env.example
+backend/.gitignore
+backend/Dockerfile
+backend/server.js
+backend/app.js
+backend/package.json
+backend/package-lock.json
+
+# Docker files
+docker-compose.yml
+
+# Docs
+DEPLOYMENT.md
+PRD.md
+RESOURCE_CATALOGUE.md
+README_GAME.md

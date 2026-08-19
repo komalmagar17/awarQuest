@@ -93,42 +93,40 @@
     window.STORY_LOCALES['otp-scam-alert'][code] = locales[code];
   });
 
-  const BRIEFING_HI = {
-    hook: 'कोई फोन पर OTP के लिए दबाव डाल रहा है।',
-    objective: 'सुरागों की जांच करें, फिर सबसे सुरक्षित जवाब चुनें।'
-  };
-
   const BRIEFING_PACKS = {
     'otp-scam-alert': {
-      hi: BRIEFING_HI,
+      hi: { hook: 'कोई फोन पर OTP के लिए दबाव डाल रहा है।', objective: 'सुरागों की जांच करें, फिर सबसे सुरक्षित जवाब चुनें।' },
       bn: { hook: 'ফোনে OTP চাপ দিচ্ছে কেউ।', objective: 'সুরাগ খুঁজুন, তারপর নিরাপদ সিদ্ধান্ত নিন।' },
       ta: { hook: 'தொலைபேசியில் OTP கேட்கிறார்கள்.', objective: 'சான்றுகளை ஆராய்ந்து, பாதுகாப்பான முடிவு எடுங்கள்.' }
     },
     'fake-job-offer': {
-      hi: { hook: 'एक सपनों की नौकरी — लेकिन एक शर्त है।', objective: 'साक्ष्य इकट्ठा करें और सही करियर चुनाव करें।' }
+      hi: { hook: 'एक सपनों की नौकरी — लेकिन एक शर्त है।', objective: 'साक्ष्य इकट्ठा करें और सही करियर चुनाव करें।' },
+      bn: { hook: 'একটি স্বপ্নের চাকরি — কিন্তু একটি শর্ত আছে।', objective: 'প্রমাণ সংগ্রহ করুন এবং সঠিক ক্যারিয়ার নির্বাচন করুন।' },
+      ta: { hook: 'ஒரு கனவு வேலை — ஆனால் ஒரு நிபந்தனை உள்ளது.', objective: 'சான்றுகளை சேகரித்து சரியான தொழில் தேர்வு செய்யுங்கள்.' }
     },
     'upi-fraud-request': {
-      hi: { hook: 'कोई कहता है आपको गलती से उनका पैसा मिला।', objective: 'साक्ष्य जांचें और अपना पैसा बचाएं।' }
+      hi: { hook: 'कोई कहता है आपको गलती से उनका पैसा मिला।', objective: 'साक्ष्य जांचें और अपना पैसा बचाएं।' },
+      bn: { hook: 'কেউ বলছে আপনি ভুলবশত তাদের টাকা পেয়েছেন।', objective: 'প্রমাণ যাচাই করুন এবং আপনার টাকা বাঁচান।' },
+      ta: { hook: 'யாரோ தவறுதலாக உங்களுக்கு அவர்களின் பணம் வந்ததாக சொல்கிறார்கள்.', objective: 'சான்றுகளை சரிபார்த்து உங்கள் பணத்தை காப்பாற்றுங்கள்.' }
     },
     'scholarship-scam': {
-      hi: { hook: 'छात्रवृत्ति आपका भविष्य बदल सकती है — क्या यह असली है?', objective: 'पोर्टल सत्यापित करें और सुरक्षित कदम चुनें।' }
+      hi: { hook: 'छात्रवृत्ति आपका भविष्य बदल सकती है — क्या यह असली है?', objective: 'पोर्टल सत्यापित करें और सुरक्षित कदम चुनें।' },
+      bn: { hook: 'বৃত্তি আপনার ভবিষ্যত বদলাতে পারে — এটি কি আসল?', objective: 'পোর্টাল যাচাই করুন এবং নিরাপদ পদক্ষেপ বেছে নিন।' },
+      ta: { hook: 'உதவித்தொகை உங்கள் எதிர்காலத்தை மாற்றலாம் — இது உண்மையா?', objective: 'போர்ட்டலை சரிபார்த்து பாதுகாப்பான நடவடிக்கை எடுங்கள்.' }
     },
     'cyberbullying-response': {
-      hi: { hook: 'आपके ग्रुप चैट में अभी साइबर बुलिंग हो रही है।', objective: 'ऐसा जवाब चुनें जो पीड़ित की मदद करे।' }
+      hi: { hook: 'आपके ग्रुप चैट में अभी साइबर बुलिंग हो रही है।', objective: 'ऐसा जवाब चुनें जो पीड़ित की मदद करे।' },
+      bn: { hook: 'আপনার গ্রুপ চ্যাটে এখন সাইবার বুলিং হচ্ছে।', objective: 'এমন উত্তর বেছে নিন যা ভুক্তভোগীকে সাহায্য করে।' },
+      ta: { hook: 'உங்கள் குழு சாட்டில் இப்போது சைபர் புல்லிங் நடக்கிறது.', objective: 'பாதிக்கப்பட்டவருக்கு உதவும் பதிலைத் தேர்வு செய்யுங்கள்.' }
     }
   };
 
+  /* Fill all remaining language slots with Hindi fallback */
+  const ALL_CODES = ['te', 'mr', 'gu', 'kn', 'ml', 'pa', 'or', 'as', 'ur', 'brx', 'doi', 'ks', 'kok', 'mai', 'mni', 'ne', 'sa', 'sat', 'sd'];
   Object.keys(BRIEFING_PACKS).forEach((slug) => {
     const pack = BRIEFING_PACKS[slug];
-    ['te', 'mr', 'gu', 'kn', 'ml', 'pa', 'or', 'as', 'ur', 'brx', 'doi', 'ks', 'kok', 'mai', 'mni', 'ne', 'sa', 'sat', 'sd'].forEach((code) => {
-      if (!pack[code]) pack[code] = pack.hi || BRIEFING_HI;
-    });
-  });
-
-  Object.keys(BRIEFING_PACKS).forEach((slug) => {
-    const pack = BRIEFING_PACKS[slug];
-    ['te', 'mr', 'gu', 'kn', 'ml', 'pa', 'or', 'as', 'ur', 'brx', 'doi', 'ks', 'kok', 'mai', 'mni', 'ne', 'sa', 'sat', 'sd'].forEach((code) => {
-      if (!pack[code]) pack[code] = pack.hi || BRIEFING_HI;
+    ALL_CODES.forEach((code) => {
+      if (!pack[code]) pack[code] = pack.hi;
     });
   });
 

@@ -18,7 +18,27 @@
 </head>
 <body>
   <div id="app">
-    <select id="lang-select" class="lang-select" aria-label="Language"></select>
+    <!-- Custom professional language dropdown -->
+    <div class="lang-dropdown" id="lang-dropdown">
+      <button type="button" class="lang-btn" id="lang-btn" aria-label="Select language" aria-expanded="false">
+        <svg class="lang-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span class="lang-btn-label" id="lang-btn-label">EN</span>
+        <svg class="lang-btn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-panel" id="lang-panel" role="listbox" aria-label="Language list">
+        <div class="lang-search-wrap">
+          <svg class="lang-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="lang-search" id="lang-search" placeholder="Search language..." autocomplete="off">
+        </div>
+        <ul class="lang-list" id="lang-list" role="listbox"></ul>
+      </div>
+    </div>
+    <!-- Hidden legacy select for backwards compat -->
+    <select id="lang-select" class="lang-select" style="display:none" aria-label="Language"></select>
     <!-- AI Settings hidden for now -->
     <!-- <button id="btn-ai-settings" class="ai-key-btn" type="button" title="Gemini AI settings">🤖 AI</button> -->
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle day and night theme" aria-pressed="true">

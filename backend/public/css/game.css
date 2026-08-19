@@ -1909,26 +1909,191 @@ body.is-busy .btn.primary { opacity: 0.7; }
 #screen-game.story-mode .game-sidebar { max-width: 260px; }
 #screen-game.story-mode .chat-messages { height: 100px; }
 
-/* ── Language selector ── */
-.lang-select {
+/* ── Language selector (custom professional dropdown) ── */
+.lang-dropdown {
   position: fixed;
   top: 1.35rem;
   right: 9.5rem;
-  z-index: 50;
-  max-width: 11rem;
-  padding: 0.4rem 0.65rem;
+  z-index: 120;
+}
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   font-family: inherit;
+  cursor: pointer;
   box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
+.lang-btn:hover,
+.lang-btn:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+.lang-btn-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.lang-btn-label {
+  min-width: 1.5rem;
+  text-align: center;
+}
+.lang-btn-chevron {
+  width: 0.7rem;
+  height: 0.7rem;
+  opacity: 0.5;
+  transition: transform 0.25s ease;
+}
+.lang-dropdown.open .lang-btn-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.lang-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 260px;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.lang-dropdown.open .lang-panel {
+  max-height: 380px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  overflow: visible;
+}
+
+/* Search bar inside dropdown */
+.lang-search-wrap {
+  position: relative;
+  padding: 0.75rem 0.85rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.lang-search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.85rem;
+  height: 0.85rem;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.lang-search {
+  width: 100%;
+  padding: 0.45rem 0.55rem 0.45rem 1.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.lang-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.12);
+}
+.lang-search::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* Scrollable language list */
+.lang-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.lang-list::-webkit-scrollbar { width: 4px; }
+.lang-list::-webkit-scrollbar-track { background: transparent; }
+.lang-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 0.78rem;
+  color: var(--text);
+  user-select: none;
+}
+.lang-item:hover,
+.lang-item:focus-visible {
+  background: var(--surface2);
+}
+.lang-item.active {
+  background: rgba(99,102,241,0.1);
+  color: var(--accent);
+}
+.lang-item.active .lang-item-native {
+  font-weight: 700;
+}
+.lang-item-native {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lang-item-en {
+  font-size: 0.65rem;
+  color: var(--muted);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.lang-item-check {
+  width: 0.85rem;
+  height: 0.85rem;
+  opacity: 0;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.lang-item.active .lang-item-check {
+  opacity: 1;
+}
+
+/* Backdrop */
+.lang-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 119;
+  background: transparent;
+}
+
 .topbar { padding-right: 12rem; }
+
 @media (max-width: 960px) {
-  .lang-select { right: 1rem; top: 4.5rem; max-width: calc(100% - 2rem); }
+  .lang-dropdown { right: 1rem; top: 4.5rem; }
+  .lang-panel { right: 0; left: auto; width: calc(100vw - 2rem); max-width: 320px; }
 }
+
 
 /* ── Game flow steps ── */
 .game-flow {
